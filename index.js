@@ -44,6 +44,40 @@ function l_bfs(root) {
   }
 }
 
+function leftView(root) {
+  let queue = []
+  queue.push(root)
+  while (queue.length) {
+      const n = queue.length
+      for (let i = 0; i < n; i++) {
+          let curr = queue.shift();
+          if (i == 0)
+              console.log(curr.data)
+          if (curr.left)
+              queue.push(curr.left);
+          if (curr.right)
+              queue.push(curr.right);
+      }
+  }
+}
+
+function rightView() {
+  let queue = []
+  queue.push(this.root)
+  while (queue.length > 0) {
+      const n = queue.length
+      for (let i = 0; i < n; i++) {
+          let curr = queue.shift();
+          if (i == n - 1)
+              console.log(curr.data)
+          if (curr.left)
+              queue.push(curr.left);
+          if (curr.right)
+              queue.push(curr.right);
+      }
+  }
+}
+
 function mirror(root) {
   let q = [];
   let t = root;
