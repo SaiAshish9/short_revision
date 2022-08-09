@@ -142,24 +142,24 @@ function MCL(arr) {
 MCL([new Pair(5, 24), new Pair(39, 60), new Pair(27, 40), new Pair(50, 90)]);
 
 function print(list, n, arr, rev) {
-  const tempList = rev ? list.slice().reverse() : list.slice()
-  const max = Math.max(...tempList)
-  let index = []
-  let tmp = max
+  const tempList = rev ? list.slice().reverse() : list.slice();
+  const max = Math.max(...tempList);
+  let index = [];
+  let tmp = max;
   for (let i = n - 1; i >= 0; i--) {
-      if (tempList[i] == tmp) {
-          index.push(i)
-          tmp--
-      }
+    if (tempList[i] == tmp) {
+      index.push(i);
+      tmp--;
+    }
   }
-  index.reverse()
-  index = index.map(x => arr[x])
-  console.log("lookup")
-  console.log(list)
+  index.reverse();
+  index = index.map((x) => arr[x]);
+  console.log("lookup");
+  console.log(list);
   // console.log("subsequence")
   // console.log(index)
   // console.log(index.length)
-  console.log("######################")
+  console.log("######################");
 }
 
 // function LBS(arr) {
@@ -208,83 +208,119 @@ function print(list, n, arr, rev) {
 // // LBS([80, 60, 30, 40, 20, 10])
 // LBS([1, 11, 2, 10, 4, 5, 2, 1])
 
-
 function lcis(arr1, arr2) {
-  let m = arr1.length
-  let n = arr2.length
-  let dp = Array(n).fill(0)
-  let parent = Array(n).fill(0)
+  let m = arr1.length;
+  let n = arr2.length;
+  let dp = Array(n).fill(0);
+  let parent = Array(n).fill(0);
 
   for (let i = 0; i < m; i++) {
-      let current = 0,
-          last = -1
-      for (let j = 0; j < n; j++) {
-          if (arr1[i] == arr2[j] && current + 1 > dp[j]) {
-              dp[j] = current + 1;
-              parent[j] = last
-          }
-
-          if (arr1[i] > arr2[j] && dp[j] > current) {
-              current = dp[j];
-              last = j
-          }
+    let current = 0,
+      last = -1;
+    for (let j = 0; j < n; j++) {
+      if (arr1[i] == arr2[j] && current + 1 > dp[j]) {
+        dp[j] = current + 1;
+        parent[j] = last;
       }
+
+      if (arr1[i] > arr2[j] && dp[j] > current) {
+        current = dp[j];
+        last = j;
+      }
+    }
   }
 
-  const max = Math.max(...dp)
+  const max = Math.max(...dp);
   let index = dp.indexOf(max);
   let result = Array(max).fill(null),
-      i = 0;
+    i = 0;
   while (index != -1) {
-      result[i] = arr2[index];
-      index = parent[index];
-      i += 1
+    result[i] = arr2[index];
+    index = parent[index];
+    i += 1;
   }
-  console.log("lookup table")
-  console.log(dp)
-  result = result.reverse()
-  console.log(typeof arr1 !== "string" ? result : result.join(""))
-  return max
+  console.log("lookup table");
+  console.log(dp);
+  result = result.reverse();
+  console.log(typeof arr1 !== "string" ? result : result.join(""));
+  return max;
 }
 
-const arr1 = [3, 4, 9, 1]
-const arr2 = [5, 3, 8, 9, 10, 2, 1]
+const arr1 = [3, 4, 9, 1];
+const arr2 = [5, 3, 8, 9, 10, 2, 1];
 // 3, 9
-const arr3 = "b3sak"
-const arr4 = "baejkl"
+const arr3 = "b3sak";
+const arr4 = "baejkl";
 // bk
 console.log(lcis(arr1, arr2));
-console.log("##############")
+console.log("##############");
 console.log(lcis(arr3, arr4));
 
-var longestPalindrome = function(s) {
+var longestPalindrome = function (s) {
   let n = s.length;
   let dp = Array.from(Array(n), () => Array(n).fill(false));
   let maxLength = 1;
-  for (let i = 0; i < n; ++i)
-      dp[i][i] = true;
+  for (let i = 0; i < n; ++i) dp[i][i] = true;
   let start = 0;
   for (let i = 0; i < n - 1; ++i) {
-      if (s[i] == s[i + 1]) {
-          dp[i][i + 1] = true;
-          start = i;
-          maxLength = 2;
-      }
+    if (s[i] == s[i + 1]) {
+      dp[i][i + 1] = true;
+      start = i;
+      maxLength = 2;
+    }
   }
   for (let k = 3; k <= n; ++k) {
-      for (let i = 0; i < n - k + 1; ++i) {
-          let j = i + k - 1;
-          if (dp[i + 1][j - 1] &&
-              s[i] == s[j]) {
-              dp[i][j] = true;
-              if (k > maxLength) {
-                  start = i;
-                  maxLength = k;
-              }
-          }
+    for (let i = 0; i < n - k + 1; ++i) {
+      let j = i + k - 1;
+      if (dp[i + 1][j - 1] && s[i] == s[j]) {
+        dp[i][j] = true;
+        if (k > maxLength) {
+          start = i;
+          maxLength = k;
+        }
       }
+    }
   }
   return s.substring(start, start + maxLength);
-}
+};
 
 console.log(longestPalindrome("babad"));
+
+function lcsubstring(s1, s2) {
+  const m = s1.length;
+  const n = s2.length;
+  let row = 0;
+  let col = 0;
+  let len = 0;
+  const dp = Array.from(Array(m + 1), () => Array(n + 1).fill(0));
+  let result = 0;
+  for (let i = 0; i <= m; i++) {
+    for (let j = 0; j <= n; j++) {
+      if (i == 0 || j == 0) dp[i][j] = 0;
+      else if (s1[i - 1] == s2[j - 1]) {
+        dp[i][j] = 1 + dp[i - 1][j - 1];
+        result = Math.max(result, dp[i][j]);
+        if (len < dp[i][j]) {
+          len = dp[i][j];
+          row = i;
+          col = j;
+        }
+      } else dp[i][j] = 0;
+    }
+  }
+  if (len == 0) {
+    console.log("no substring present");
+    return 0;
+  }
+  let resultStr = "";
+  while (dp[row][col] != 0) {
+    resultStr = s1[row - 1] + resultStr; // or Y[col-1]
+    --len;
+    --row;
+    --col;
+  }
+  console.log(resultStr);
+  return result;
+}
+
+console.log(lcsubstring("sai", "sai9"));
