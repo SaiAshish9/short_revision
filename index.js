@@ -13,7 +13,7 @@ function isLoop(l) {
   }
   return false;
 }
-
+ 
 const l = new ListNode(1);
 l.next = new ListNode(2);
 l.next.next = new ListNode(3);
