@@ -71,7 +71,7 @@ class Graph {
     console.log(Math.min(...result));
   }
 
-  tspHelper(curr, count, cost, result, visited = {}) {
+  tspH(curr, count, cost, result, visited = {}) {
     if (count == this.n && this.g[curr][0]) {
       result.push(cost + this.g[curr][0]);
       return;
