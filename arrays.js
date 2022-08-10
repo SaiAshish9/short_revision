@@ -32,3 +32,23 @@ var val = 17;
 var arrSize = 7;
 
 console.log(isPairSum(arr, arrSize, val));
+
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+ var nextGreaterElements = function(nums) {
+  const n = nums.length;
+  const res = Array(n).fill(-1);
+  const stack = [];
+  for (let i = 0; i < n * 2; ++i) {
+      const num = nums[i % n];
+      while (stack.length && nums[stack.slice(-1)[0]] < num)
+          res[stack.pop()] = num;
+      if (i < n)
+          stack.push(i);
+  }
+  return res;
+};
+
+console.log(nextGreaterElements([1, 2, 1]))
