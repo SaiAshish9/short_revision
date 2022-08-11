@@ -16,6 +16,21 @@ var TreeNode = function (data) {
   this.right = null;
 };
 
+function isBSTUtil(root) {
+  let prev;
+  if (root != null) {
+    if (!isBSTUtil(root.left)) return false;
+    if (prev && root.data <= prev.data) return false;
+    prev = root;
+    return isBSTUtil(root.right);
+  }
+  return true;
+}
+
+function isBST(root) {
+  return isBSTUtil(root);
+}
+
 function bfs(t) {
   const q = [];
   q.push(t);
