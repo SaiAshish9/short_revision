@@ -4,9 +4,9 @@ var Node = function (data, next = null) {
 };
 
 function reverse(head) {
-  let temp = head;
-  let curr = temp;
-  let prev = (next = null);
+  var temp = head;
+  var curr = temp;
+  var prev = (next = null);
   while (curr) {
     next = curr.next;
     curr.next = prev;
@@ -18,8 +18,8 @@ function reverse(head) {
 }
 
 function reverseTP(head) {
-  let temp = head;
-  let curr = temp;
+  var temp = head;
+  var curr = temp;
   while (curr.next) {
     let next = curr.next;
     curr.next = next.next;
@@ -33,5 +33,5 @@ const l = new Node(1);
 l.next = new Node(2);
 l.next.next = new Node(3);
 
-reverse(l);
 reverseTP(l);
+reverse(l);
