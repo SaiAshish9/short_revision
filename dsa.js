@@ -286,7 +286,7 @@ function BST(root) {
 }
 
 console.log("check BST");
-console.log(BST(t))
+console.log(BST(t));
 
 // immediateChildrenAreItsPrimeFactors
 function primeFactors(n, k) {
@@ -325,5 +325,16 @@ function immediateChildrenAreItsPrimeFactors(root) {
 
 console.log("immediateChildrenAreItsPrimeFactors");
 immediateChildrenAreItsPrimeFactors(t);
+
+// linked list
+
+var ListNode = function (data, next = null) {
+  this.data = data;
+  this.next = typeof next === "undefined" ? null : next;
+};
+
+function cycle() {}
+
+
 
 // greedy
