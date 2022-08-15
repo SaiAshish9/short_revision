@@ -361,4 +361,6 @@ console.log("reverseTP");
 l = reverseTP(l);
 console.log(l);
 
+function countCommon(a, b) {}
+
 // greedy
