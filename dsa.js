@@ -398,8 +398,25 @@ console.log(l);
 
 // two pointers
 
+function twoPointers(arr, sum) {
+  let l = 0;
+  let r = arr.length - 1;
+  while (l <= r) {
+    if (arr[l] + arr[r] === sum) {
+      return [l, r];
+    }
+    if (arr[l] + arr[r] > sum) r++;
+    else l--;
+  }
+}
+console.log(twoPointers([1, 2, 3, 4], 5));
+
 // slidingWindow
 
 // nextGreaterElement
 
 // twoSum
+
+function twoSum() {}
+
+console.log(twoSum([1, 2, 3, 4], 5));
