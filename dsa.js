@@ -440,6 +440,5 @@ console.log(slidingWindow([100, 200, 300, 400], 2));
 // valid parentheses
 
 // nextGreaterElement
-
 function nextGreaterElement() {}
 console.log(nextGreaterElement([1, 2, 3]));
