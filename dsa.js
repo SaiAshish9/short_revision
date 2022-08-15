@@ -174,6 +174,61 @@ var TreeNode = function (data, left, right) {
 
 // inorder preorder postorder check bst bfs mirror left right
 
+function inorder(root) {
+  if (root) {
+    inorder(root.left);
+    console.log(root.data);
+    inorder(root.right);
+  }
+}
+
+function preorder(root) {
+  if (root) {
+    console.log(root.data);
+    preorder(root.left);
+    preorder(root.right);
+  }
+}
+
+function postorder(root) {
+  if (root) {
+    postorder(root.left);
+    postorder(root.right);
+    console.log(root.data);
+  }
+}
+
+const t = new TreeNode(2);
+t.left = new TreeNode(1);
+t.right = new TreeNode(3);
+
+console.log("inorder");
+inorder(t);
+console.log("preorder");
+preorder(t);
+console.log("postorder");
+postorder(t);
+
+function bfs(root) {
+  let q = [];
+  q.push(root);
+  while (q.length) {
+    let curr = q.shift();
+    console.log(curr.data);
+    if (curr.left) q.push(curr.left);
+    if (curr.right) q.push(curr.right);
+  }
+}
+
+function mirror() {}
+
+function leftView() {}
+
+function rightView() {}
+
+console.log("bfs");
+bfs(t);
+
 // immediateChildrenAreItsPrimeFactors
 function primeFactors(n, k) {
   let c = 2;
