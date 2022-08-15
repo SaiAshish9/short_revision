@@ -166,6 +166,12 @@ g3.tsp();
 
 // trees
 
+var TreeNode = function (data, left, right) {
+  this.data = data;
+  this.left = typeof left === "undefined" ? null : left;
+  this.right = typeof left === "undefined" ? null : right;
+};
+
 // inorder preorder postorder check bst bfs mirror left right
 
 // immediateChildrenAreItsPrimeFactors
