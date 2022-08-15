@@ -379,8 +379,8 @@ function lps(l) {
   while (curr) {
     let next = curr.next;
     curr.next = prev;
-    result = max(result, 2 * countCommon(prev, next) + 1);
-    result = max(result, 2 * countCommon(curr, next));
+    result = Math.max(result, 2 * countCommon(prev, next) + 1);
+    result = Math.max(result, 2 * countCommon(curr, next));
     prev = curr;
     curr = next;
   }
