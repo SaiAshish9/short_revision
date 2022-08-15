@@ -286,7 +286,7 @@ function BST(root) {
 }
 
 console.log("check BST");
-BST(t);
+console.log(BST(t))
 
 // immediateChildrenAreItsPrimeFactors
 function primeFactors(n, k) {
