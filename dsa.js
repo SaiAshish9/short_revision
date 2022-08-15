@@ -385,4 +385,10 @@ l = lps(l);
 console.log("reverse");
 l = reverse(l);
 console.log(l);
+
+// backtracking
+// sudoku nqueens nqueens2 knighttour rateinamaze subsets wordbreak
+
+
+
 // greedy
