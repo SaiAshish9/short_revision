@@ -116,7 +116,6 @@ class Graph1 {
     console.log(this.g);
   }
 }
-
 let c = ["R", "G", "B"];
 const g2 = new Graph1(3, c);
 let v1 = [1, 2, 3];
@@ -163,17 +162,13 @@ g3.addEdge(0, 1, 10);
 g3.addEdge(1, 2, 20);
 g3.addEdge(2, 0, 30);
 g3.tsp();
-
 // trees
-
 var TreeNode = function (data, left, right) {
   this.data = data;
   this.left = typeof left === "undefined" ? null : left;
   this.right = typeof left === "undefined" ? null : right;
 };
-
 // inorder preorder postorder check bst bfs mirror left right
-
 function inorder(root) {
   if (root) {
     inorder(root.left);
@@ -181,7 +176,6 @@ function inorder(root) {
     inorder(root.right);
   }
 }
-
 function preorder(root) {
   if (root) {
     console.log(root.data);
@@ -189,7 +183,6 @@ function preorder(root) {
     preorder(root.right);
   }
 }
-
 function postorder(root) {
   if (root) {
     postorder(root.left);
@@ -197,18 +190,15 @@ function postorder(root) {
     console.log(root.data);
   }
 }
-
 const t = new TreeNode(2);
 t.left = new TreeNode(1);
 t.right = new TreeNode(3);
-
 console.log("inorder");
 inorder(t);
 console.log("preorder");
 preorder(t);
 console.log("postorder");
 postorder(t);
-
 function bfs(root) {
   let q = [];
   q.push(root);
@@ -219,7 +209,6 @@ function bfs(root) {
     if (curr.right) q.push(curr.right);
   }
 }
-
 function mirror(root) {
   let q = [];
   q.push(root);
@@ -230,7 +219,6 @@ function mirror(root) {
     if (curr.right) q.push(curr.right);
   }
 }
-
 function leftView(root) {
   let q = [];
   q.push(root);
@@ -244,7 +232,6 @@ function leftView(root) {
     }
   }
 }
-
 function rightView(root) {
   let q = [];
   q.push(root);
@@ -258,7 +245,6 @@ function rightView(root) {
     }
   }
 }
-
 console.log("bfs");
 bfs(t);
 mirror(t);
@@ -271,9 +257,7 @@ console.log("leftView");
 leftView(t);
 console.log("rightView");
 rightView(t);
-
 // check BST
-
 function BST(root) {
   let prev;
   if (root) {
@@ -284,10 +268,8 @@ function BST(root) {
   }
   return true;
 }
-
 console.log("check BST");
 console.log(BST(t));
-
 // immediateChildrenAreItsPrimeFactors
 function primeFactors(n, k) {
   let c = 2;
@@ -300,7 +282,6 @@ function primeFactors(n, k) {
   }
   return res.includes(k);
 }
-
 function immediateChildrenAreItsPrimeFactors(root) {
   let q = [];
   q.push(root);
@@ -322,17 +303,13 @@ function immediateChildrenAreItsPrimeFactors(root) {
   }
   console.log(count);
 }
-
 console.log("immediateChildrenAreItsPrimeFactors");
 immediateChildrenAreItsPrimeFactors(t);
-
 // linked list
-
 var ListNode = function (data, next = null) {
   this.data = data;
   this.next = typeof next === "undefined" ? null : next;
 };
-
 function cycle(head) {
   let temp = head;
   const s = new Set();
@@ -343,12 +320,10 @@ function cycle(head) {
   }
   return false;
 }
-
 const l = new ListNode(1);
 l.next = new ListNode(2);
 l.next.next = new ListNode(3);
 // l.next.next = l;
 console.log("cycle");
 console.log(cycle(l));
-
 // greedy
