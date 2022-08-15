@@ -76,28 +76,23 @@ g1.addEdge(2, 0);
 g1.bfs();
 g1.dfs();
 g1.allPathsDfs();
-
 // Graph Coloring
-
 class Graph1 {
   constructor(n, c) {
     this.g = {};
     this.n = n;
     this.c = c;
   }
-
   addVertex(v) {
     this.g[v] = {
       v: [],
       c: null,
     };
   }
-
   addEdge(u, v) {
     this.g[u].v.push(v);
     this.g[v].v.push(u);
   }
-
   bfs(v = 0) {
     let q = [];
     q.push(v);
@@ -133,31 +128,47 @@ g2.addEdge(1, 2);
 g2.addEdge(2, 0);
 console.log("GC");
 g2.bfs();
-
 // TSP
-
 class Graph2 {
   constructor(n) {
     this.g = Array.from(Array(n), () => Array(n).fill(0));
     this.n = n;
   }
-
-  addVertex() {}
-
-  addEdge() {}
+  addEdge(u, v, w) {
+    this.g[u][v] = w;
+    this.g[v][u] = w;
+  }
+  tsp() {
+    const result = [];
+    this.tspH(0, 1, 0, result);
+    console.log(Math.min(...result));
+  }
+  tspH(curr, count, cost, result, visited = {}) {
+    if (count === this.n && this.g[curr][0]) {
+      result.push(cost + this.g[curr][0]);
+      return;
+    }
+    for (let i = 0; i < this.n; i++) {
+      let curr_cost = this.g[curr][i];
+      if (!visited[i] && curr_cost) {
+        visited[i] = true;
+        this.tspH(i, count + 1, cost + curr_cost, result, visited);
+        visited[i] = false;
+      }
+    }
+  }
 }
-
-const g3 = new Graph(3);
-for (let i in v) {
-  g3.addVertex(i);
-}
-g3.addEdge(0, 1);
-g3.addEdge(1, 2);
-g3.addEdge(2, 0);
+const g3 = new Graph2(3);
+g3.addEdge(0, 1, 10);
+g3.addEdge(1, 2, 20);
+g3.addEdge(2, 0, 30);
 g3.tsp();
 
 // trees
 
+// inorder preorder postorder check bst bfs mirror left right
+
+// immediateChildrenAreItsPrimeFactors
 function primeFactors(n, k) {
   let c = 2;
   let res = [];
