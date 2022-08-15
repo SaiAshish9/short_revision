@@ -409,15 +409,21 @@ function twoPointers(arr, sum) {
     else l--;
   }
 }
+console.log("twoPointers")
 console.log(twoPointers([1, 2, 3, 4], 5));
 
 // slidingWindow
 
 function slidingWindow(arr, k) {
   const n = arr.length;
-  let sum = arr.reduce((a, b) => a + b, 0);
+  let sum = (max = arr.reduce((a, b) => a + b, 0));
+  for (let i = k; i < n; i++) {
+    sum += sum - arr[i];
+    max = Math.max(max, sum);
+  }
+  return max;
 }
-
+console.log("slidingWindow")
 console.log(slidingWindow([100, 200, 300, 400], 2));
 
 // nextGreaterElement
