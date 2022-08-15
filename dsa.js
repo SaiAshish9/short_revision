@@ -274,14 +274,19 @@ rightView(t);
 
 // check BST
 
-function BSTUtil(root) {
+function BST(root) {
+  let prev;
   if (root) {
-    if (root.left) BSTUtil(root.left);
-    return BSTUtil(root.right);
+    if (!BST(root.left)) return false;
+    if (prev && root.data <= prev.data) return false;
+    prev = root;
+    return BST(root.right);
   }
+  return true;
 }
 
-function BST() {}
+console.log("check BST");
+BST(t);
 
 // immediateChildrenAreItsPrimeFactors
 function primeFactors(n, k) {
