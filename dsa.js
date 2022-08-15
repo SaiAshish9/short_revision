@@ -329,4 +329,19 @@ function cycle(head) {
 
 console.log("cycle");
 console.log(cycle(l));
+
+function reverse(l){
+
+}
+
+function reverseTP(l){
+
+}
+
+console.log("reverse");
+console.log(reverse(l));
+
+console.log("reverseTP");
+console.log(reverseTP(l));
+
 // greedy
