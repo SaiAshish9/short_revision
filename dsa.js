@@ -134,9 +134,6 @@ g2.addEdge(2, 0);
 console.log("GC");
 g2.bfs();
 
-
-
-
 // trees
 
 function primeFactors(n, k) {
