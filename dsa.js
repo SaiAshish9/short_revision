@@ -265,6 +265,8 @@ mirror(t);
 console.log("mirror");
 console.log(t);
 mirror(t);
+console.log("mirror");
+console.log(t);
 console.log("leftView");
 leftView(t);
 console.log("rightView");
