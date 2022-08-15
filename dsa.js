@@ -274,7 +274,12 @@ rightView(t);
 
 // check BST
 
-function BSTUtil(root) {}
+function BSTUtil(root) {
+  if (root) {
+    if (root.left) BSTUtil(root.left);
+    return BSTUtil(root.right);
+  }
+}
 
 function BST() {}
 
