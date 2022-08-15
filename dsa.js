@@ -134,6 +134,28 @@ g2.addEdge(2, 0);
 console.log("GC");
 g2.bfs();
 
+// TSP
+
+class Graph2 {
+  constructor(n) {
+    this.g = Array.from(Array(n), () => Array(n).fill(0));
+    this.n = n;
+  }
+
+  addVertex() {}
+
+  addEdge() {}
+}
+
+const g3 = new Graph(3);
+for (let i in v) {
+  g3.addVertex(i);
+}
+g3.addEdge(0, 1);
+g3.addEdge(1, 2);
+g3.addEdge(2, 0);
+g3.tsp();
+
 // trees
 
 function primeFactors(n, k) {
