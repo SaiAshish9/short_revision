@@ -355,12 +355,43 @@ function reverseTP(l) {
 }
 
 console.log("reverse");
-l = reverseTP(l);
+l = reverse(l);
 console.log(l);
 console.log("reverseTP");
 l = reverseTP(l);
 console.log(l);
 
-function countCommon(a, b) {}
+function countCommon(a, b) {
+  let count = 0;
+  while (a && b) {
+    if (a.data == b.data) count += 1;
+    else break;
+    a = a.next;
+    b = b.next;
+  }
+  return count;
+}
 
+function lps(l) {
+  let curr = l;
+  let prev = null;
+  let result = 0;
+  while (curr) {
+    let next = curr.next;
+    curr.next = prev;
+    result = max(result, 2 * countCommon(prev, next) + 1);
+    result = max(result, 2 * countCommon(curr, next));
+    prev = curr;
+    curr = next;
+  }
+  l = prev;
+  console.log(result);
+  return l;
+}
+
+console.log("lps");
+l = lps(l);
+console.log("reverse");
+l = reverse(l);
+console.log(l);
 // greedy
