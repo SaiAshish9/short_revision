@@ -272,8 +272,6 @@ leftView(t);
 console.log("rightView");
 rightView(t);
 
-function checkBST() {}
-
 // immediateChildrenAreItsPrimeFactors
 function primeFactors(n, k) {
   let c = 2;
@@ -284,7 +282,32 @@ function primeFactors(n, k) {
       res.push(c);
     } else c++;
   }
-  return n.includes(k);
+  return res.includes(k);
 }
+
+function checkBST(root) {
+  let q = [];
+  q.push(root);
+  while (q.length) {
+    let curr = q.shift();
+    let count = 0;
+    if (curr.left && !curr.right && primeFactors(curr.data, curr.left)) count++;
+    if (!curr.left && curr.right && primeFactors(curr.data, curr.right))
+      count++;
+    if (
+      !curr.left &&
+      !curr.right &&
+      primeFactors(curr.data, curr.left) &&
+      primeFactors(curr.data, curr.right)
+    )
+      count++;
+    if (curr.left) q.push(curr.left);
+    if (curr.right) q.push(curr.right);
+  }
+  console.log(count);
+}
+
+console.log("checkBST");
+checkBST(t);
 
 // greedy

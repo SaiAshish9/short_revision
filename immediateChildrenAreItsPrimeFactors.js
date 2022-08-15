@@ -1,15 +1,3 @@
-function primeFactors(n, i) {
-  let c = 2;
-  const res = [];
-  while (n > 1) {
-    if (n % c == 0) {
-      res.push(c);
-      n /= c;
-    } else c++;
-  }
-  return res.includes(i);
-}
-
 var TreeNode = function (data) {
   this.data = data ?? null;
   this.left = null;
@@ -29,6 +17,18 @@ function isBSTUtil(root) {
 
 function isBST(root) {
   return isBSTUtil(root);
+}
+
+function primeFactors(n, i) {
+  let c = 2;
+  const res = [];
+  while (n > 1) {
+    if (n % c == 0) {
+      res.push(c);
+      n /= c;
+    } else c++;
+  }
+  return res.includes(i);
 }
 
 function bfs(t) {
