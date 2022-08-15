@@ -77,6 +77,8 @@ g1.bfs();
 g1.dfs();
 g1.allPathsDfs();
 
+// Graph Coloring
+
 class Graph1 {
   constructor(n, c) {
     this.g = {};
@@ -101,11 +103,12 @@ class Graph1 {
     q.push(v);
     let visited = {};
     visited[v] = true;
-    this.g[v].c = this.c[v];
+    this.g[0].c = this.c[0];
     while (q.length) {
       let ele = q.shift();
       let c = 0;
-      let list = this.g[ele].v;
+      console.log(ele);
+      let list = this.g[ele].v.sort((a, b) => a - b);
       for (let l of list) {
         if (!visited[l]) {
           visited[l] = true;
@@ -114,7 +117,6 @@ class Graph1 {
         if (this.g[l].c === c) c++;
       }
       this.g[ele].c = c;
-      // console.log(this.c[c]);
     }
     console.log(this.g);
   }
@@ -131,6 +133,10 @@ g2.addEdge(1, 2);
 g2.addEdge(2, 0);
 console.log("GC");
 g2.bfs();
+
+
+
+
 // trees
 
 function primeFactors(n, k) {

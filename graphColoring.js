@@ -31,7 +31,7 @@ class Graph {
         this.g[0].color = this.c[0]
         while (q.length) {
             const v = q.shift()
-            const list = this.g[v].list
+            const list = this.g[v].list.sort((a, b) => a - b);
             let c = 0
             for (let i of list) {
                 if (!visited[i]) {
@@ -47,19 +47,14 @@ class Graph {
 
 }
 
-const c = ['red', 'green', 'yellow', 'blue', 'black', 'orange']
-const v = ['A', 'B', 'C', 'D', 'E', 'F']
+const c = ['red', 'green', 'yellow']
+const v = ['A', 'B', 'C']
 const g = new Graph(6, v, c)
 for (let x in v) {
     g.addVertex(x)
 }
 g.addEdge(0, 1);
-g.addEdge(0, 3);
-g.addEdge(0, 4);
 g.addEdge(1, 2);
-g.addEdge(3, 4);
-g.addEdge(4, 5);
-g.addEdge(4, 2);
-g.addEdge(2, 5);
+g.addEdge(2, 0);
 g.bfs()
 g.print()
