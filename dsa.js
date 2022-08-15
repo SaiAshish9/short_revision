@@ -415,8 +415,20 @@ console.log(twoPointers([1, 2, 3, 4], 5));
 
 // nextGreaterElement
 
+function nextGreaterElement() {}
+
+console.log(nextGreaterElement([1, 2, 3]));
+
 // twoSum
 
-function twoSum() {}
+function twoSum(arr, k) {
+  let m = {};
+  for (let i in arr) {
+    let diff = k - arr[i];
+    if (m[diff]) {
+      return [+i, arr[i]];
+    } else m[arr[i]] = i;
+  }
+}
 
 console.log(twoSum([1, 2, 3, 4], 5));
