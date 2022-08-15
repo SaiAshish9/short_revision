@@ -413,6 +413,10 @@ console.log(twoPointers([1, 2, 3, 4], 5));
 
 // slidingWindow
 
+function slidingWindow() {}
+
+console.log(slidingWindow());
+
 // nextGreaterElement
 
 function nextGreaterElement() {}
