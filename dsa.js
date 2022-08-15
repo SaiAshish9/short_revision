@@ -272,6 +272,12 @@ leftView(t);
 console.log("rightView");
 rightView(t);
 
+// check BST
+
+function BSTUtil(root) {}
+
+function BST() {}
+
 // immediateChildrenAreItsPrimeFactors
 function primeFactors(n, k) {
   let c = 2;
@@ -288,9 +294,9 @@ function primeFactors(n, k) {
 function checkBST(root) {
   let q = [];
   q.push(root);
+  let count = 0;
   while (q.length) {
     let curr = q.shift();
-    let count = 0;
     if (curr.left && !curr.right && primeFactors(curr.data, curr.left)) count++;
     if (!curr.left && curr.right && primeFactors(curr.data, curr.right))
       count++;
