@@ -310,12 +310,10 @@ var ListNode = function (data, next = null) {
   this.data = data;
   this.next = typeof next === "undefined" ? null : next;
 };
-
 var l = new ListNode(1);
 l.next = new ListNode(2);
 l.next.next = new ListNode(3);
 // l.next.next = l;
-
 function cycle(head) {
   let temp = head;
   const s = new Set();
@@ -326,10 +324,8 @@ function cycle(head) {
   }
   return false;
 }
-
 console.log("cycle");
 console.log(cycle(l));
-
 function reverse(l) {
   let curr = l;
   let prev = null;
@@ -342,7 +338,6 @@ function reverse(l) {
   l = prev;
   return l;
 }
-
 function reverseTP(l) {
   let curr = l;
   while (curr.next) {
@@ -353,14 +348,12 @@ function reverseTP(l) {
   }
   return l;
 }
-
 console.log("reverse");
 l = reverse(l);
 console.log(l);
 console.log("reverseTP");
 l = reverseTP(l);
 console.log(l);
-
 function countCommon(a, b) {
   let count = 0;
   while (a && b) {
@@ -371,7 +364,6 @@ function countCommon(a, b) {
   }
   return count;
 }
-
 function lps(l) {
   let curr = l;
   let prev = null;
@@ -388,7 +380,6 @@ function lps(l) {
   console.log(result);
   return l;
 }
-
 console.log("lps");
 l = lps(l);
 console.log("reverse");
