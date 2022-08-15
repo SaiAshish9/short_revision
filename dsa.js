@@ -311,7 +311,7 @@ var ListNode = function (data, next = null) {
   this.next = typeof next === "undefined" ? null : next;
 };
 
-const l = new ListNode(1);
+var l = new ListNode(1);
 l.next = new ListNode(2);
 l.next.next = new ListNode(3);
 // l.next.next = l;
@@ -330,18 +330,35 @@ function cycle(head) {
 console.log("cycle");
 console.log(cycle(l));
 
-function reverse(l){
-
+function reverse(l) {
+  let curr = l;
+  let prev = null;
+  while (curr) {
+    let next = curr.next;
+    curr.next = prev;
+    prev = curr;
+    curr = next;
+  }
+  l = prev;
+  return l;
 }
 
-function reverseTP(l){
-
+function reverseTP(l) {
+  let curr = l;
+  while (curr.next) {
+    let next = curr.next;
+    curr.next = next.next;
+    next.next = l;
+    l = next;
+  }
+  return l;
 }
 
 console.log("reverse");
-console.log(reverse(l));
-
+l = reverseTP(l);
+console.log(l);
 console.log("reverseTP");
-console.log(reverseTP(l));
+l = reverseTP(l);
+console.log(l);
 
 // greedy
