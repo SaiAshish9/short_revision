@@ -437,7 +437,11 @@ function slidingWindow(arr, k) {
 console.log("slidingWindow");
 console.log(slidingWindow([100, 200, 300, 400], 2));
 
-// valid parentheses
+// validParentheses
+function validParentheses() {}
+
+console.log("validParentheses");
+console.log(validParentheses("(()))"));
 
 // nextGreaterElement
 function nextGreaterElement() {}
