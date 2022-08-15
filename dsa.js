@@ -416,7 +416,6 @@ console.log(twoPointers([1, 2, 3, 4], 5));
 // nextGreaterElement
 
 function nextGreaterElement() {}
-
 console.log(nextGreaterElement([1, 2, 3]));
 
 // twoSum
@@ -429,7 +428,6 @@ function twoSum(arr, k) {
     } else m[arr[i]] = i;
   }
 }
-
 console.log(twoSum([1, 2, 3, 4], 5));
 
 // valid parentheses
