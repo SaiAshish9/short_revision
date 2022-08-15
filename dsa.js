@@ -387,12 +387,10 @@ l = reverse(l);
 console.log(l);
 
 // backtracking
-// sudoku nqueens nqueens2 knighttour rateinamaze subsets wordbreak array + string permutations combinations 
-
+// sudoku nqueens nqueens2 knighttour rateinamaze subsets wordbreak array + string permutations combinations
 
 // greedy
 // activity_selectivity job_sequencing_with_deadlines fractional_knapsack
-
 
 // dp
 
@@ -400,4 +398,8 @@ console.log(l);
 
 // two pointers
 
-// 
+// slidingWindow
+
+// nextGreaterElement
+
+// twoSum
