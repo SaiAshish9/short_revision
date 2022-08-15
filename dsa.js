@@ -347,6 +347,7 @@ function cycle(head) {
 const l = new ListNode(1);
 l.next = new ListNode(2);
 l.next.next = new ListNode(3);
+// l.next.next = l;
 console.log("cycle");
 console.log(cycle(l));
 
