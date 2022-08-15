@@ -310,6 +310,12 @@ var ListNode = function (data, next = null) {
   this.data = data;
   this.next = typeof next === "undefined" ? null : next;
 };
+
+const l = new ListNode(1);
+l.next = new ListNode(2);
+l.next.next = new ListNode(3);
+// l.next.next = l;
+
 function cycle(head) {
   let temp = head;
   const s = new Set();
@@ -320,10 +326,7 @@ function cycle(head) {
   }
   return false;
 }
-const l = new ListNode(1);
-l.next = new ListNode(2);
-l.next.next = new ListNode(3);
-// l.next.next = l;
+
 console.log("cycle");
 console.log(cycle(l));
 // greedy
