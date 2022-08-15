@@ -220,14 +220,55 @@ function bfs(root) {
   }
 }
 
-function mirror() {}
+function mirror(root) {
+  let q = [];
+  q.push(root);
+  while (q.length) {
+    let curr = q.shift();
+    [curr.left, curr.right] = [curr.right, curr.left];
+    if (curr.left) q.push(curr.left);
+    if (curr.right) q.push(curr.right);
+  }
+}
 
-function leftView() {}
+function leftView(root) {
+  let q = [];
+  q.push(root);
+  while (q.length) {
+    const n = q.length;
+    for (let i = 0; i < n; i++) {
+      let curr = q.shift();
+      if (i === 0) console.log(curr.data);
+      if (curr.left) q.push(curr.left);
+      if (curr.right) q.push(curr.right);
+    }
+  }
+}
 
-function rightView() {}
+function rightView(root) {
+  let q = [];
+  q.push(root);
+  while (q.length) {
+    const n = q.length;
+    for (let i = 0; i < n; i++) {
+      let curr = q.shift();
+      if (i === n - 1) console.log(curr.data);
+      if (curr.left) q.push(curr.left);
+      if (curr.right) q.push(curr.right);
+    }
+  }
+}
 
 console.log("bfs");
 bfs(t);
+mirror(t);
+console.log("mirror");
+console.log(t);
+mirror(t);
+console.log("leftView");
+leftView(t);
+console.log("rightView");
+rightView(t);
 
 // immediateChildrenAreItsPrimeFactors
 function primeFactors(n, k) {
