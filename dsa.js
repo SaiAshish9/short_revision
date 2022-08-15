@@ -416,15 +416,10 @@ console.log(twoPointers([1, 2, 3, 4], 5));
 
 function slidingWindow(arr, k) {
   const n = arr.length;
-  let max = 0;
-  let sum = 0;
-  for (let i = 0; i < k; i++) {
-    sum += arr[i];
-    max = sum;
-  }
+  let sum = (max = arr.slice(0, k).reduce((a, b) => a + b, 0));
   for (let i = k; i < n; i++) {
     sum += arr[i] - arr[i - k];
-    if (sum > max) max = sum;
+    max = Math.max(max, sum);
   }
   return max;
 }
