@@ -333,8 +333,21 @@ var ListNode = function (data, next = null) {
   this.next = typeof next === "undefined" ? null : next;
 };
 
-function cycle() {}
+function cycle(head) {
+  let temp = head;
+  const s = new Set();
+  while (temp) {
+    if (s.has(temp)) return true;
+    s.add(temp);
+    temp = temp.next;
+  }
+  return false;
+}
 
-
+const l = new ListNode(1);
+l.next = new ListNode(2);
+l.next.next = new ListNode(3);
+console.log("cycle");
+console.log(cycle(l));
 
 // greedy
