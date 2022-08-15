@@ -412,25 +412,6 @@ function twoPointers(arr, sum) {
 console.log("twoPointers");
 console.log(twoPointers([1, 2, 3, 4], 5));
 
-// slidingWindow
-
-function slidingWindow(arr, k) {
-  const n = arr.length;
-  let sum = (max = arr.slice(0, k).reduce((a, b) => a + b, 0));
-  for (let i = k; i < n; i++) {
-    sum += arr[i] - arr[i - k];
-    max = Math.max(max, sum);
-  }
-  return max;
-}
-console.log("slidingWindow");
-console.log(slidingWindow([100, 200, 300, 400], 2));
-
-// nextGreaterElement
-
-function nextGreaterElement() {}
-console.log(nextGreaterElement([1, 2, 3]));
-
 // twoSum
 function twoSum(arr, k) {
   let m = {};
@@ -443,4 +424,22 @@ function twoSum(arr, k) {
 }
 console.log(twoSum([1, 2, 3, 4], 5));
 
+// slidingWindow
+function slidingWindow(arr, k) {
+  const n = arr.length;
+  let sum = (max = arr.slice(0, k).reduce((a, b) => a + b, 0));
+  for (let i = k; i < n; i++) {
+    sum += arr[i] - arr[i - k];
+    max = Math.max(max, sum);
+  }
+  return max;
+}
+console.log("slidingWindow");
+console.log(slidingWindow([100, 200, 300, 400], 2));
+
 // valid parentheses
+
+// nextGreaterElement
+
+function nextGreaterElement() {}
+console.log(nextGreaterElement([1, 2, 3]));
