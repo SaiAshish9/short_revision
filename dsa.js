@@ -301,7 +301,7 @@ function primeFactors(n, k) {
   return res.includes(k);
 }
 
-function checkBST(root) {
+function immediateChildrenAreItsPrimeFactors(root) {
   let q = [];
   q.push(root);
   let count = 0;
@@ -323,7 +323,7 @@ function checkBST(root) {
   console.log(count);
 }
 
-console.log("checkBST");
-checkBST(t);
+console.log("immediateChildrenAreItsPrimeFactors");
+immediateChildrenAreItsPrimeFactors(t);
 
 // greedy
