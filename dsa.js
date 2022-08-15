@@ -272,6 +272,8 @@ leftView(t);
 console.log("rightView");
 rightView(t);
 
+function checkBST() {}
+
 // immediateChildrenAreItsPrimeFactors
 function primeFactors(n, k) {
   let c = 2;
