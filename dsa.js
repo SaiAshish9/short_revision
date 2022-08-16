@@ -389,9 +389,13 @@ console.log(l);
 // backtracking
 // sudoku nqueens nqueens2 knighttour rateinamaze subsets wordbreak array + string permutations combinations
 
+// sudoku
+
+const n = 9;
+const grid = Array.from(Array(n), () => Array(n).fill(0));
+
 // greedy
 // activity_selection job_sequencing_with_deadlines fractional_knapsack
-
 // activity_selection
 
 class Selection {
@@ -426,7 +430,7 @@ s.sort((a, b) => a.f - b.f);
 console.log(s);
 AS(s);
 
-// job_sequencing_with_deadlines
+// job_sequencing_with_deadlines desc
 class Job {
   constructor(j, d, p) {
     this.job = j;
@@ -460,12 +464,38 @@ print(jobs, 3);
 
 // fractional_knapsack
 
+class Item {
+  constructor(v, w) {
+    this.v = v;
+    this.w = w;
+  }
+}
+
+function fractionalKnapsack(W, arr, n) {
+  arr.sort((a, b) => (a.value, a.weight) - b.value / b.weight);
+  let currW = 0;
+  let finalV = 0.0;
+  for (let i = 0; i < n; i++) {
+    if (currW + arr[i].w <= W) {
+      currW += arr[i].w;
+      finalV += arr[i].v;
+    } else {
+      let remain = W - currW;
+      finalV += arr[i].v * (remain / arr[i].w);
+      break;
+    }
+  }
+  return finalV;
+}
+let W = 50;
+let arr = [];
+arr.push(new Item(60, 10), new Item(100, 20), new Item(120, 30));
 console.log("fractional_knapsack");
+console.log(fractionalKnapsack(W, arr, arr.length));
 
 // dp
 
 // arrays
-
 // two pointers
 
 function twoPointers(arr, sum) {
