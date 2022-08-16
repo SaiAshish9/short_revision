@@ -162,51 +162,51 @@ function print(list, n, arr, rev) {
   console.log("######################");
 }
 
-// function LBS(arr) {
-//   const n = arr.length
-//   let lis = Array(n).fill(1)
-//   for (i = 1; i < n; i++)
-//       for (j = 0; j < i; j++)
-//           if (arr[i] > arr[j] && lis[i] < lis[j] + 1)
-//               lis[i] = lis[j] + 1
-//   let lds = Array(n).fill(1)
-//   for (i = n - 1; i >= 0; i--)
-//       for (j = n - 1; j > i; j--)
-//           if (arr[i] > arr[j] && lds[i] < lds[j] + 1)
-//               lds[i] = lds[j] + 1
-//   console.log("lis")
-//   print(lis, n, arr)
-//   console.log("lds")
-//   print(lds, n, arr, true)
-//   let maxVal = arr[0],
-//       inx = 0;
-//   for (let i = 0; i < n; i++) {
-//       if (maxVal < lis[i] + lds[i] - 1) {
-//           maxVal = lis[i] + lds[i] - 1;
-//           inx = i;
-//       }
-//   }
-//   let ct1 = lis[inx];
-//   let res = [];
-//   for (let i = inx; i >= 0 && ct1 > 0; i--) {
-//       if (lis[i] == ct1) {
-//           res.push(arr[i]);
-//           ct1--;
-//       }
-//   }
-//   res.reverse();
-//   let ct2 = lds[inx] - 1;
-//   for (let i = inx; i < n && ct2 > 0; i++) {
-//       if (lds[i] == ct2) {
-//           res.push(arr[i]);
-//           ct2--;
-//       }
-//   }
-//   console.log(res)
-//   console.log(res.length)
-// }
-// // LBS([80, 60, 30, 40, 20, 10])
-// LBS([1, 11, 2, 10, 4, 5, 2, 1])
+function LBS(arr) {
+  const n = arr.length
+  let lis = Array(n).fill(1)
+  for (i = 1; i < n; i++)
+      for (j = 0; j < i; j++)
+          if (arr[i] > arr[j] && lis[i] < lis[j] + 1)
+              lis[i] = lis[j] + 1
+  let lds = Array(n).fill(1)
+  for (i = n - 1; i >= 0; i--)
+      for (j = n - 1; j > i; j--)
+          if (arr[i] > arr[j] && lds[i] < lds[j] + 1)
+              lds[i] = lds[j] + 1
+  console.log("lis")
+  print(lis, n, arr)
+  console.log("lds")
+  print(lds, n, arr, true)
+  let maxVal = arr[0],
+      inx = 0;
+  for (let i = 0; i < n; i++) {
+      if (maxVal < lis[i] + lds[i] - 1) {
+          maxVal = lis[i] + lds[i] - 1;
+          inx = i;
+      }
+  }
+  let ct1 = lis[inx];
+  let res = [];
+  for (let i = inx; i >= 0 && ct1 > 0; i--) {
+      if (lis[i] == ct1) {
+          res.push(arr[i]);
+          ct1--;
+      }
+  }
+  res.reverse();
+  let ct2 = lds[inx] - 1;
+  for (let i = inx; i < n && ct2 > 0; i++) {
+      if (lds[i] == ct2) {
+          res.push(arr[i]);
+          ct2--;
+      }
+  }
+  console.log(res)
+  console.log(res.length)
+}
+// LBS([80, 60, 30, 40, 20, 10])
+LBS([1, 11, 2, 10, 4, 5, 2, 1])
 
 function lcis(arr1, arr2) {
   let m = arr1.length;
