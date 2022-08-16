@@ -764,8 +764,8 @@ function knapSack(val, wt, W) {
 
 const val = [10, 15, 40];
 const wt = [1, 2, 3];
-const W = 6;
-console.log(knapSack(val, wt, W));
+const W1 = 6;
+console.log(knapSack(val, wt, W1));
 
 function bc(n, k) {
   const dp = Array.from(Array(n + 1), () => Array(k + 1).fill(-1));
