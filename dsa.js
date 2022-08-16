@@ -391,8 +391,97 @@ console.log(l);
 
 // sudoku
 
-const n = 9;
-const grid = Array.from(Array(n), () => Array(n).fill(0));
+function isSafe(grid, row, col, num) {
+  for (let j = 0; j < n; j++)
+      if (grid[row][j] == num)
+          return false;
+  for (let i = 0; i < n; i++)
+      if (grid[i][col] == num)
+          return false;
+  let startRow = row - row % 3,
+      startCol = col - col % 3;
+  for (let i = 0; i < 3; i++)
+      for (let j = 0; j < 3; j++)
+          if (grid[i + startRow][j + startCol] == num)
+              return false;
+  return true;
+}
+function solve(grid, row, col, n) {
+  if (row == n - 1 && col == n)
+      return true;
+  if (col == n) {
+      row++;
+      col = 0;
+  }
+  if (grid[row][col] != 0)
+      return solve(grid, row, col + 1, n);
+  for (let num = 1; num < n + 1; num++) {
+      if (isSafe(grid, row, col, num)) {
+          grid[row][col] = num;
+          if (solve(grid, row, col + 1, n))
+              return true;
+      }
+      grid[row][col] = 0;
+  }
+  return false;
+}
+let n = 9;
+const sudoku = Array.from(Array(n), () => Array(n).fill(0))
+sudoku.forEach(x => console.log(x.join(" ")))
+const start = new Date().getTime();
+console.log("#################")
+solve(sudoku, 0, 0, n)
+const end = new Date().getTime();
+sudoku.forEach(x => console.log(x.join(" ")))
+console.log("#################")
+console.log("Time required to solve sudoku: ")
+console.log((end - start) / 1000 + " s")
+
+// knight tour
+const print = b => b.forEach(x => console.log(x.join(" ")))
+function isSafe(x, y, board) {
+    return x >= 0 && x < n && y >= 0 && y < n && board[x][y] == -1
+}
+function knightTour(board, xMove, yMove, n) {
+    board[0][0] = 0
+    if (!knightTourGuide(0, 0, 1, board, xMove, yMove, n)) {
+        return false
+    }
+    return true
+}
+function knightTourGuide(x, y, move, board, xMove, yMove, n) {
+    let next_x, next_y;
+    if (move == n * n) return true
+    for (let k = 0; k < n; k++) {
+        next_x = x + xMove[k];
+        next_y = y + yMove[k];
+        if (isSafe(next_x, next_y, board)) {
+            board[next_x][next_y] = move
+            if (knightTourGuide(next_x, next_y, move + 1, board, xMove, yMove, n))
+                return true
+            else
+                board[next_x][next_y] = -1 
+        }
+    }
+    return false
+}
+const n1 = 8
+// A Knight can make maximum eight moves
+console.log("Initial Board")
+const board = Array.from(Array(n1), () => Array(n1).fill(-1))
+// we need to memorize below two arrays:
+const xMove = [2, 1, -1, -2, -2, -1, 1, 2];
+// 2 -> move 2 cells right
+const yMove = [1, 2, 2, 1, -1, -2, -2, -1];
+// -1 -> move one cell downwards
+print(board)
+console.log("Total No. Of Cells : " + n * n)
+const start1 = new Date().getTime()
+knightTour(board, xMove, yMove, n)
+const end1 = new Date().getTime()
+console.log("Solved Board")
+print(board)
+console.log("Time Required For Execution: " + (end1 - start1) / 1000 + "s")
 
 // greedy
 // activity_selection job_sequencing_with_deadlines fractional_knapsack
