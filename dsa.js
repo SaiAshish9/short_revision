@@ -390,7 +390,41 @@ console.log(l);
 // sudoku nqueens nqueens2 knighttour rateinamaze subsets wordbreak array + string permutations combinations
 
 // greedy
-// activity_selectivity job_sequencing_with_deadlines fractional_knapsack
+// activity_selection job_sequencing_with_deadlines fractional_knapsack
+
+// activity_selection
+
+class Selection {
+  constructor(s, f) {
+    this.s = s;
+    this.f = f;
+  }
+}
+
+function AS(selection) {
+  const s = selection.map((x) => x.s);
+  const f = selection.map((x) => x.f);
+  let i = (j = 0);
+  for (j = 1; j < f.length; j++) {
+    if (s[j] >= f[i]) {
+      i = j;
+      console.log(j);
+    }
+  }
+}
+
+const s = [
+  new Selection(1, 9),
+  new Selection(3, 4),
+  new Selection(0, 1),
+  new Selection(5, 7),
+  new Selection(8, 9),
+  new Selection(5, 9),
+];
+console.log("activity_selection")
+s.sort((a, b) => a.f - b.f);
+console.log(s);
+AS(s);
 
 // dp
 
