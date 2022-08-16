@@ -437,6 +437,60 @@ console.log("#################")
 console.log("Time required to solve sudoku: ")
 console.log((end - start) / 1000 + " s")
 
+// nqueens
+const print = b => b.forEach(x => console.log(x.join(" ")))
+function isSafe(board, row, col, n) {
+    let i, j
+    for (let i = 0; i < col; i++)
+        if (board[row][i] == 1) return false
+    for (let i = row, j = col; i >= 0 && j >= 0; i--, j--)
+        if (board[i][j] == 1) return false;
+    for (i = row, j = col; j >= 0 && i < n; i++, j--)
+        if (board[i][j] == 1) return false;
+    return true
+}
+function solve(board, n) {
+    return placeQueens(board, 0, n)
+}
+function placeQueens(board, col, n) {
+    if (col >= n) return true;
+    for (let i = 0; i < n; i++) {
+        if (isSafe(board, i, col)) {
+            board[i][col] = 1;
+            if (placeQueens(board, col + 1, n)) return true;
+            board[i][col] = 0; 
+        }
+    }
+    return false;
+}
+const n2 = 4
+console.log("Initial Board ( 4 Queen's )")
+const board2 = Array.from(Array(n), () => Array(n).fill(0))
+print(board2)
+const start2 = new Date().getTime()
+solve(board2, n)
+const end2 = new Date().getTime()
+console.log("Solved Board ( 4 Queen's )")
+print(board2)
+console.log("Time Required For Execution: " + (end2 - start2) / 1000 + "s")
+
+// n queens2
+function placeQueens(board, col, n, result) {
+  if (col == n) {
+      result.push(board.map((cell, i) => cell.indexOf(1)))
+      return true
+  };
+  let res = false
+  for (let i = 0; i < n; i++) {
+      if (isSafe(board, i, col, n)) {
+          board[i][col] = 1;
+          res = placeQueens(board, col + 1, n, result) || res;
+          board[i][col] = 0;
+      }
+  }
+  return res;
+}
+
 // knight tour
 const print = b => b.forEach(x => console.log(x.join(" ")))
 function isSafe(x, y, board) {
@@ -466,14 +520,10 @@ function knightTourGuide(x, y, move, board, xMove, yMove, n) {
     return false
 }
 const n1 = 8
-// A Knight can make maximum eight moves
 console.log("Initial Board")
 const board = Array.from(Array(n1), () => Array(n1).fill(-1))
-// we need to memorize below two arrays:
 const xMove = [2, 1, -1, -2, -2, -1, 1, 2];
-// 2 -> move 2 cells right
 const yMove = [1, 2, 2, 1, -1, -2, -2, -1];
-// -1 -> move one cell downwards
 print(board)
 console.log("Total No. Of Cells : " + n * n)
 const start1 = new Date().getTime()
@@ -482,6 +532,71 @@ const end1 = new Date().getTime()
 console.log("Solved Board")
 print(board)
 console.log("Time Required For Execution: " + (end1 - start1) / 1000 + "s")
+
+
+// rate in a maze
+const print = b => b.forEach(x => console.log(x.join(" ")))
+function isSafe(maze, x, y, n) {
+    return (x >= 0 && x < n && y >= 0 &&
+        y < n && maze[x][y] == 1);
+}
+function solve(maze, n, result) {
+    return traverseMaze(maze, 0, 0, result, n)
+}
+function traverseMaze(maze, x, y, result, n) {
+    if (x == n - 1 && y == n - 1 &&
+        maze[x][y] == 1) {
+        result[x][y] = 1;
+        return true;
+    }
+    if (isSafe(maze, x, y, n)) {
+        if (result[x][y] == 1)
+            return false;
+        result[x][y] = 1;
+        if (traverseMaze(maze, x + 1, y, result, n))
+            return true;
+        if (traverseMaze(maze, x, y + 1, result, n))
+            return true;
+        if (traverseMaze(maze, x - 1, y, result, n))
+            return true;
+        if (traverseMaze(maze, x, y - 1, result, n))
+            return true;
+        result[x][y] = 0; 
+        return false;
+    }
+    return false;
+}
+console.log("Maze: ")
+const maze = [
+    [1, 0, 0, 0],
+    [1, 1, 0, 1],
+    [0, 1, 0, 0],
+    [1, 1, 1, 1]
+];
+print(maze)
+const n4 = maze.length;
+const result = Array.from(Array(n), () => Array(n).fill(0))
+const start4 = new Date().getTime()
+solve(maze, n, result);
+const end4 = new Date().getTime()
+console.log("Result: ")
+print(result)
+console.log("Execution Time: " + (end4 - start4) / 1000 + "s")
+
+// string permutations
+function permuteBacktrack(str, answer) {
+  if (str.length === 0) {
+      console.log(answer)
+      return
+  }
+  for (let i = 0; i < str.length; i++) {
+      let ch = str[i];
+      let left = str.substring(0, i);
+      let right = str.substring(i + 1);
+      let rest = left + right;
+      permuteBacktrack(rest, answer + ch);
+  }
+}
 
 // greedy
 // activity_selection job_sequencing_with_deadlines fractional_knapsack
