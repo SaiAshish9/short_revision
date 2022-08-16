@@ -392,210 +392,256 @@ console.log(l);
 // sudoku
 
 function isSafe(grid, row, col, num) {
-  for (let j = 0; j < n; j++)
-      if (grid[row][j] == num)
-          return false;
-  for (let i = 0; i < n; i++)
-      if (grid[i][col] == num)
-          return false;
-  let startRow = row - row % 3,
-      startCol = col - col % 3;
+  for (let j = 0; j < n; j++) if (grid[row][j] == num) return false;
+  for (let i = 0; i < n; i++) if (grid[i][col] == num) return false;
+  let startRow = row - (row % 3),
+    startCol = col - (col % 3);
   for (let i = 0; i < 3; i++)
-      for (let j = 0; j < 3; j++)
-          if (grid[i + startRow][j + startCol] == num)
-              return false;
+    for (let j = 0; j < 3; j++)
+      if (grid[i + startRow][j + startCol] == num) return false;
   return true;
 }
 function solve(grid, row, col, n) {
-  if (row == n - 1 && col == n)
-      return true;
+  if (row == n - 1 && col == n) return true;
   if (col == n) {
-      row++;
-      col = 0;
+    row++;
+    col = 0;
   }
-  if (grid[row][col] != 0)
-      return solve(grid, row, col + 1, n);
+  if (grid[row][col] != 0) return solve(grid, row, col + 1, n);
   for (let num = 1; num < n + 1; num++) {
-      if (isSafe(grid, row, col, num)) {
-          grid[row][col] = num;
-          if (solve(grid, row, col + 1, n))
-              return true;
-      }
-      grid[row][col] = 0;
+    if (isSafe(grid, row, col, num)) {
+      grid[row][col] = num;
+      if (solve(grid, row, col + 1, n)) return true;
+    }
+    grid[row][col] = 0;
   }
   return false;
 }
 let n = 9;
-const sudoku = Array.from(Array(n), () => Array(n).fill(0))
-sudoku.forEach(x => console.log(x.join(" ")))
+const sudoku = Array.from(Array(n), () => Array(n).fill(0));
+sudoku.forEach((x) => console.log(x.join(" ")));
 const start = new Date().getTime();
-console.log("#################")
-solve(sudoku, 0, 0, n)
+console.log("#################");
+solve(sudoku, 0, 0, n);
 const end = new Date().getTime();
-sudoku.forEach(x => console.log(x.join(" ")))
-console.log("#################")
-console.log("Time required to solve sudoku: ")
-console.log((end - start) / 1000 + " s")
+sudoku.forEach((x) => console.log(x.join(" ")));
+console.log("#################");
+console.log("Time required to solve sudoku: ");
+console.log((end - start) / 1000 + " s");
 
 // nqueens
-const print = b => b.forEach(x => console.log(x.join(" ")))
+const print = (b) => b.forEach((x) => console.log(x.join(" ")));
 function isSafe(board, row, col, n) {
-    let i, j
-    for (let i = 0; i < col; i++)
-        if (board[row][i] == 1) return false
-    for (let i = row, j = col; i >= 0 && j >= 0; i--, j--)
-        if (board[i][j] == 1) return false;
-    for (i = row, j = col; j >= 0 && i < n; i++, j--)
-        if (board[i][j] == 1) return false;
-    return true
+  let i, j;
+  for (let i = 0; i < col; i++) if (board[row][i] == 1) return false;
+  for (let i = row, j = col; i >= 0 && j >= 0; i--, j--)
+    if (board[i][j] == 1) return false;
+  for (i = row, j = col; j >= 0 && i < n; i++, j--)
+    if (board[i][j] == 1) return false;
+  return true;
 }
 function solve(board, n) {
-    return placeQueens(board, 0, n)
+  return placeQueens(board, 0, n);
 }
 function placeQueens(board, col, n) {
-    if (col >= n) return true;
-    for (let i = 0; i < n; i++) {
-        if (isSafe(board, i, col)) {
-            board[i][col] = 1;
-            if (placeQueens(board, col + 1, n)) return true;
-            board[i][col] = 0; 
-        }
+  if (col >= n) return true;
+  for (let i = 0; i < n; i++) {
+    if (isSafe(board, i, col)) {
+      board[i][col] = 1;
+      if (placeQueens(board, col + 1, n)) return true;
+      board[i][col] = 0;
     }
-    return false;
+  }
+  return false;
 }
-const n2 = 4
-console.log("Initial Board ( 4 Queen's )")
-const board2 = Array.from(Array(n), () => Array(n).fill(0))
-print(board2)
-const start2 = new Date().getTime()
-solve(board2, n)
-const end2 = new Date().getTime()
-console.log("Solved Board ( 4 Queen's )")
-print(board2)
-console.log("Time Required For Execution: " + (end2 - start2) / 1000 + "s")
+const n2 = 4;
+console.log("Initial Board ( 4 Queen's )");
+const board2 = Array.from(Array(n), () => Array(n).fill(0));
+print(board2);
+const start2 = new Date().getTime();
+solve(board2, n);
+const end2 = new Date().getTime();
+console.log("Solved Board ( 4 Queen's )");
+print(board2);
+console.log("Time Required For Execution: " + (end2 - start2) / 1000 + "s");
 
 // n queens2
 function placeQueens(board, col, n, result) {
   if (col == n) {
-      result.push(board.map((cell, i) => cell.indexOf(1)))
-      return true
-  };
-  let res = false
+    result.push(board.map((cell, i) => cell.indexOf(1)));
+    return true;
+  }
+  let res = false;
   for (let i = 0; i < n; i++) {
-      if (isSafe(board, i, col, n)) {
-          board[i][col] = 1;
-          res = placeQueens(board, col + 1, n, result) || res;
-          board[i][col] = 0;
-      }
+    if (isSafe(board, i, col, n)) {
+      board[i][col] = 1;
+      res = placeQueens(board, col + 1, n, result) || res;
+      board[i][col] = 0;
+    }
   }
   return res;
 }
 
 // knight tour
-const print = b => b.forEach(x => console.log(x.join(" ")))
+const print = (b) => b.forEach((x) => console.log(x.join(" ")));
 function isSafe(x, y, board) {
-    return x >= 0 && x < n && y >= 0 && y < n && board[x][y] == -1
+  return x >= 0 && x < n && y >= 0 && y < n && board[x][y] == -1;
 }
 function knightTour(board, xMove, yMove, n) {
-    board[0][0] = 0
-    if (!knightTourGuide(0, 0, 1, board, xMove, yMove, n)) {
-        return false
-    }
-    return true
+  board[0][0] = 0;
+  if (!knightTourGuide(0, 0, 1, board, xMove, yMove, n)) {
+    return false;
+  }
+  return true;
 }
 function knightTourGuide(x, y, move, board, xMove, yMove, n) {
-    let next_x, next_y;
-    if (move == n * n) return true
-    for (let k = 0; k < n; k++) {
-        next_x = x + xMove[k];
-        next_y = y + yMove[k];
-        if (isSafe(next_x, next_y, board)) {
-            board[next_x][next_y] = move
-            if (knightTourGuide(next_x, next_y, move + 1, board, xMove, yMove, n))
-                return true
-            else
-                board[next_x][next_y] = -1 
-        }
+  let next_x, next_y;
+  if (move == n * n) return true;
+  for (let k = 0; k < n; k++) {
+    next_x = x + xMove[k];
+    next_y = y + yMove[k];
+    if (isSafe(next_x, next_y, board)) {
+      board[next_x][next_y] = move;
+      if (knightTourGuide(next_x, next_y, move + 1, board, xMove, yMove, n))
+        return true;
+      else board[next_x][next_y] = -1;
     }
-    return false
+  }
+  return false;
 }
-const n1 = 8
-console.log("Initial Board")
-const board = Array.from(Array(n1), () => Array(n1).fill(-1))
+const n1 = 8;
+console.log("Initial Board");
+const board = Array.from(Array(n1), () => Array(n1).fill(-1));
 const xMove = [2, 1, -1, -2, -2, -1, 1, 2];
 const yMove = [1, 2, 2, 1, -1, -2, -2, -1];
-print(board)
-console.log("Total No. Of Cells : " + n * n)
-const start1 = new Date().getTime()
-knightTour(board, xMove, yMove, n)
-const end1 = new Date().getTime()
-console.log("Solved Board")
-print(board)
-console.log("Time Required For Execution: " + (end1 - start1) / 1000 + "s")
-
+print(board);
+console.log("Total No. Of Cells : " + n * n);
+const start1 = new Date().getTime();
+knightTour(board, xMove, yMove, n);
+const end1 = new Date().getTime();
+console.log("Solved Board");
+print(board);
+console.log("Time Required For Execution: " + (end1 - start1) / 1000 + "s");
 
 // rate in a maze
-const print = b => b.forEach(x => console.log(x.join(" ")))
+const print = (b) => b.forEach((x) => console.log(x.join(" ")));
 function isSafe(maze, x, y, n) {
-    return (x >= 0 && x < n && y >= 0 &&
-        y < n && maze[x][y] == 1);
+  return x >= 0 && x < n && y >= 0 && y < n && maze[x][y] == 1;
 }
 function solve(maze, n, result) {
-    return traverseMaze(maze, 0, 0, result, n)
+  return traverseMaze(maze, 0, 0, result, n);
 }
 function traverseMaze(maze, x, y, result, n) {
-    if (x == n - 1 && y == n - 1 &&
-        maze[x][y] == 1) {
-        result[x][y] = 1;
-        return true;
-    }
-    if (isSafe(maze, x, y, n)) {
-        if (result[x][y] == 1)
-            return false;
-        result[x][y] = 1;
-        if (traverseMaze(maze, x + 1, y, result, n))
-            return true;
-        if (traverseMaze(maze, x, y + 1, result, n))
-            return true;
-        if (traverseMaze(maze, x - 1, y, result, n))
-            return true;
-        if (traverseMaze(maze, x, y - 1, result, n))
-            return true;
-        result[x][y] = 0; 
-        return false;
-    }
+  if (x == n - 1 && y == n - 1 && maze[x][y] == 1) {
+    result[x][y] = 1;
+    return true;
+  }
+  if (isSafe(maze, x, y, n)) {
+    if (result[x][y] == 1) return false;
+    result[x][y] = 1;
+    if (traverseMaze(maze, x + 1, y, result, n)) return true;
+    if (traverseMaze(maze, x, y + 1, result, n)) return true;
+    if (traverseMaze(maze, x - 1, y, result, n)) return true;
+    if (traverseMaze(maze, x, y - 1, result, n)) return true;
+    result[x][y] = 0;
     return false;
+  }
+  return false;
 }
-console.log("Maze: ")
+console.log("Maze: ");
 const maze = [
-    [1, 0, 0, 0],
-    [1, 1, 0, 1],
-    [0, 1, 0, 0],
-    [1, 1, 1, 1]
+  [1, 0, 0, 0],
+  [1, 1, 0, 1],
+  [0, 1, 0, 0],
+  [1, 1, 1, 1],
 ];
-print(maze)
+print(maze);
 const n4 = maze.length;
-const result = Array.from(Array(n), () => Array(n).fill(0))
-const start4 = new Date().getTime()
+const result = Array.from(Array(n), () => Array(n).fill(0));
+const start4 = new Date().getTime();
 solve(maze, n, result);
-const end4 = new Date().getTime()
-console.log("Result: ")
-print(result)
-console.log("Execution Time: " + (end4 - start4) / 1000 + "s")
+const end4 = new Date().getTime();
+console.log("Result: ");
+print(result);
+console.log("Execution Time: " + (end4 - start4) / 1000 + "s");
 
 // string permutations
 function permuteBacktrack(str, answer) {
   if (str.length === 0) {
-      console.log(answer)
-      return
+    console.log(answer);
+    return;
   }
   for (let i = 0; i < str.length; i++) {
-      let ch = str[i];
-      let left = str.substring(0, i);
-      let right = str.substring(i + 1);
-      let rest = left + right;
-      permuteBacktrack(rest, answer + ch);
+    let ch = str[i];
+    let left = str.substring(0, i);
+    let right = str.substring(i + 1);
+    let rest = left + right;
+    permuteBacktrack(rest, answer + ch);
   }
+}
+
+// array permutations
+var permute = function (nums) {
+  let res = [];
+  let visited = Array(nums.length).fill(false);
+  dfs(nums, res, [], visited);
+  return res;
+};
+
+var dfs = function (nums, res = [], curr = [], visited = []) {
+  if (curr.length == nums.length) {
+    res.push(curr.slice());
+    return;
+  }
+  for (let i in nums) {
+    if (visited[i] === false) {
+      visited[i] = true;
+      curr.push(nums[i]);
+      dfs(nums, res, curr, visited);
+      curr.pop();
+      visited[i] = false;
+    }
+  }
+};
+
+// combinations
+var dfs = function (n, k, s, res, curr = []) {
+  if (k == 0) {
+    res.push(curr.slice());
+    return;
+  }
+  for (let i = s; i <= n; i++) {
+    curr.push(i);
+    dfs(n, k - 1, i + 1, res, curr);
+    curr.pop();
+  }
+};
+// dfs(n, k, 1, res)
+
+// break words
+function breakWords(n, str, words, res = "") {
+  for (let i = 1; i <= n; i++) {
+    const prefix = str.substring(0, i);
+    if (words.includes(prefix)) {
+      if (i == n) {
+        res += prefix;
+        console.log(res);
+        return;
+      }
+      breakWords(n - i, str.substring(i), words, res + prefix);
+    }
+  }
+}
+
+// subsets of a set
+function subsets(i_set, result, subset = [], index = 0) {
+  result.push(subset.slice());
+  for (let i = index; i < i_set.length; i++) {
+    subset.push(i_set[i]);
+    subsets(i_set, result, subset, i + 1);
+    subset.pop();
+  }
+  return;
 }
 
 // greedy
