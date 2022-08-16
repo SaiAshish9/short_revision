@@ -784,7 +784,6 @@ function lcs(s1, s2) {
   const m = s1.length;
   const n = s2.length;
   const dp = Array.from(Array(m + 1), () => Array(n + 1).fill(0));
-
   for (let i = 0; i <= m; i++) {
     for (let j = 0; j <= n; j++) {
       if (i == 0 || j == 0) dp[i][j] = 0;
@@ -792,7 +791,6 @@ function lcs(s1, s2) {
       else dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
     }
   }
-
   let len = dp[m][n];
   let subsequence = Array(len).fill(null);
   let i = m,
