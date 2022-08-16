@@ -421,10 +421,46 @@ const s = [
   new Selection(8, 9),
   new Selection(5, 9),
 ];
-console.log("activity_selection")
+console.log("activity_selection");
 s.sort((a, b) => a.f - b.f);
 console.log(s);
 AS(s);
+
+// job_sequencing_with_deadlines
+class Job {
+  constructor(j, d, p) {
+    this.job = j;
+    this.profit = p;
+    this.deadline = d;
+  }
+}
+function print(jobs, t) {
+  let result = Array(t).fill(false);
+  let answer = Array(t).fill(null);
+  jobs.sort((a, b) => b.deadline - a.deadline);
+  for (let i in jobs)
+    for (let j = Math.min(t - 1, jobs[i].deadline - 1); j >= 0; j--) {
+      if (!result[j]) {
+        result[j] = true;
+        answer[j] = jobs[i].job;
+        break;
+      }
+    }
+  console.log(answer);
+}
+const jobs = [
+  new Job("A", 2, 100),
+  new Job("B", 1, 19),
+  new Job("C", 2, 27),
+  new Job("D", 1, 25),
+  new Job("E", 3, 15),
+];
+console.log("job_sequencing_with_deadlines");
+print(jobs, 3);
+
+// fractional_knapsack
+
+console.log("fractional_knapsack");
 
 // dp
 
