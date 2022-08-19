@@ -210,20 +210,20 @@ var TreeNode = function (data, left, right) {
 // }
 
 // delete node when sum <=k
-function dfs(root, k, sum = 0) {
+function dfsH(root, k, sum = 0) {
   if (root) {
-    sum += root.data;
-    if (!root.left && !root.right) {
-      if (sum < k) root = null;
-      return;
-    }
-    dfs(root.left, k, sum);
-    dfs(root.right, k, sum);
+    let lsum = sum + root.data;
+    let rsum = lsum;
+    root.left = dfsH(root.left, k, lsum);
+    root.right = dfsH(root.right, k, rsum);
+    sum = Math.max(lsum, rsum);
+    if (sum < k) root = null;
+    return root;
   }
 }
 function sumLK(t) {
   const k = 4;
-  dfs(t, k);
+  dfsH(t, k);
   console.log(t);
 }
 const t = new TreeNode(2);
