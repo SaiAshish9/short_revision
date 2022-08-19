@@ -1164,7 +1164,6 @@
 // console.log(nextGreaterElement([1, 2, 3]));
 
 let arr = [3, 2, 0, 1];
-
 arr = arr.map((val, index) => {
   let obj = {
     key: index,
