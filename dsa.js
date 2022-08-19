@@ -162,13 +162,13 @@
 // g3.addEdge(1, 2, 20);
 // g3.addEdge(2, 0, 30);
 // g3.tsp();
-// // trees
-// var TreeNode = function (data, left, right) {
-//   this.data = data;
-//   this.left = typeof left === "undefined" ? null : left;
-//   this.right = typeof left === "undefined" ? null : right;
-// };
-// // inorder preorder postorder check bst bfs mirror left right
+// trees
+var TreeNode = function (data, left, right) {
+  this.data = data;
+  this.left = typeof left === "undefined" ? null : left;
+  this.right = typeof left === "undefined" ? null : right;
+};
+// // inorder preorder postorder check bst bfs mirror left right sum
 // function inorder(root) {
 //   if (root) {
 //     inorder(root.left);
@@ -190,9 +190,46 @@
 //     console.log(root.data);
 //   }
 // }
-// const t = new TreeNode(2);
-// t.left = new TreeNode(1);
-// t.right = new TreeNode(3);
+
+// sum of all tree nodes
+// function dfs(root, result, sum = 0) {
+//   if (root) {
+//     sum += root.data;
+//     if (!root.left && !root.right) {
+//       result.push(sum);
+//       return;
+//     }
+//     dfs(root.left, result, sum);
+//     dfs(root.right, result, sum);
+//   }
+// }
+// function sum(t) {
+//   const result = [];
+//   dfs(t, result);
+//   console.log(result);
+// }
+
+// delete node when sum <=k
+function dfs(root, sum = 0, k) {
+  if (root) {
+    sum += root.data;
+    if (!root.left && !root.right) {
+      if (sum <= k) root = null;
+      return;
+    }
+    dfs(root.left, sum, k);
+    dfs(root.right, sum, k);
+  }
+}
+function sum(t) {
+  const k = 4;
+  dfs(t, k);
+  console.log(result);
+}
+const t = new TreeNode(2);
+t.left = new TreeNode(1);
+t.right = new TreeNode(3);
+
 // console.log("inorder");
 // inorder(t);
 // console.log("preorder");
@@ -1213,5 +1250,3 @@
 // var envelopes
 //   = [ [ 4, 3 ], [ 5, 3 ], [ 5, 6 ], [ 1, 2 ] ];
 // console.log(maxEnvelopes(envelopes))
-
-
