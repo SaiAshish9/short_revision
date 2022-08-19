@@ -1163,4 +1163,21 @@
 // }
 // console.log(nextGreaterElement([1, 2, 3]));
 
-const arr = [3, 2, 0, 1];
+let arr = [3, 2, 0, 1];
+
+arr = arr.map((val, index) => {
+  let obj = {
+    key: index,
+    value: val,
+    newValue: null,
+  };
+  return obj;
+});
+
+for (let i of arr) {
+  let ele = arr.filter((x) => x.key === arr[i.value].value)[0];
+  arr[i.value].newValue = ele.value;
+}
+
+console.log({ arr });
+// [1, 0, 3, 2]
