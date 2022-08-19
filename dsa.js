@@ -233,15 +233,16 @@ var TreeNode = function (data, left, right) {
 // sumLK(t);
 
 // print all paths
-function dfs(root, result, curr = []) {
+function dfs(root, result, curr = [], pathLen = 0) {
   if (root) {
-    curr.push(root.data);
+    curr[pathLen] = root.data;
+    pathLen++;
     if (!root.left && !root.right) {
       result.push(curr.slice());
       return;
     }
-    dfs(root.left, result, curr);
-    dfs(root.right, result, curr);
+    dfs(root.left, result, curr, pathLen);
+    dfs(root.right, result, curr, pathLen);
   }
 }
 function paths(t) {
