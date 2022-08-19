@@ -250,7 +250,6 @@ function paths(t) {
   dfs(t, result);
   console.log(result);
 }
-
 const t = new TreeNode(2);
 t.left = new TreeNode(1);
 t.right = new TreeNode(3);
