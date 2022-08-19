@@ -233,7 +233,6 @@ var TreeNode = function (data, left, right) {
 // sumLK(t);
 
 // print all paths
-
 function dfs(root, result, sum = 0) {
   if (root) {
     sum += root.data;
