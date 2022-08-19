@@ -1172,11 +1172,9 @@ arr = arr.map((val, index) => {
   };
   return obj;
 });
-
 for (let i of arr) {
   let ele = arr.filter((x) => x.key === arr[i.value].value)[0];
   arr[i.value].newValue = ele.value;
 }
-
 console.log({ arr });
 // [1, 0, 3, 2]
