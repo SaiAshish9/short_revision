@@ -1179,17 +1179,39 @@
 // console.log({ arr5 });
 // // [1, 0, 3, 2]
 
-function lis(arr) {
-  var n = arr.length;
-  var dp = Array(n).fill(1);
-  for (var i = 1; i < n; ++i) {
-    for (var j = 0; j < i; ++j) {
-      if (arr[i] > arr[j] && dp[i] < dp[j] + 1) dp[i] = dp[j] + 1;
-    }
-  }
-  console.log(dp);
-  return Math.max(...arr);
-}
-var arr = [1, 2, 3, 0, 1, 2];
+// function lis(arr) {
+//   var n = arr.length;
+//   var dp = Array(n).fill(1);
+//   for (var i = 1; i < n; ++i) {
+//     for (var j = 0; j < i; ++j) {
+//       if (arr[i] > arr[j] && dp[i] < dp[j] + 1) dp[i] = dp[j] + 1;
+//     }
+//   }
+//   console.log(dp);
+//   return Math.max(...arr);
+// }
+// var arr = [1, 2, 3, 0, 1, 2];
+// console.log(lis(arr));
 
-console.log(lis(arr));
+// function maxEnvelopes(envelopes){
+//   var n = envelopes.length;
+//   if (n == 0)
+//       return n;
+//   envelopes.sort();
+//   var dp = Array(n).fill(1);
+//   for (var i = 1; i < n; ++i) {
+//       for (var j = 0; j < i; ++j) {
+//           if (envelopes[i][0] > envelopes[j][0]
+//               && envelopes[i][1] > envelopes[j][1]
+//               && dp[i] < dp[j] + 1)
+//               dp[i] = dp[j] + 1;
+//       }
+//   }
+//   // lookup dp table => [1, 2, 2, 3]
+//   return Math.max(...dp);
+// }
+// var envelopes
+//   = [ [ 4, 3 ], [ 5, 3 ], [ 5, 6 ], [ 1, 2 ] ];
+// console.log(maxEnvelopes(envelopes))
+
+
