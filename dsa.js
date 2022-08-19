@@ -232,7 +232,24 @@ var TreeNode = function (data, left, right) {
 // t.right = new TreeNode(3);
 // sumLK(t);
 
+// print all paths
 
+function dfs(root, result, sum = 0) {
+  if (root) {
+    sum += root.data;
+    if (!root.left && !root.right) {
+      result.push(sum);
+      return;
+    }
+    dfs(root.left, result, sum);
+    dfs(root.right, result, sum);
+  }
+}
+function sum(t) {
+  const result = [];
+  dfs(t, result);
+  console.log(result);
+}
 
 // console.log("inorder");
 // inorder(t);
