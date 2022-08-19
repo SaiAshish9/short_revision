@@ -233,22 +233,27 @@ var TreeNode = function (data, left, right) {
 // sumLK(t);
 
 // print all paths
-function dfs(root, result, sum = 0) {
+function dfs(root, result, curr = []) {
   if (root) {
-    sum += root.data;
+    curr.push(root.data);
     if (!root.left && !root.right) {
-      result.push(sum);
+      result.push(curr.slice());
       return;
     }
-    dfs(root.left, result, sum);
-    dfs(root.right, result, sum);
+    dfs(root.left, result, curr);
+    dfs(root.right, result, curr);
   }
 }
-function sum(t) {
+function paths(t) {
   const result = [];
   dfs(t, result);
   console.log(result);
 }
+
+const t = new TreeNode(2);
+t.left = new TreeNode(1);
+t.right = new TreeNode(3);
+paths(t);
 
 // console.log("inorder");
 // inorder(t);
