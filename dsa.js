@@ -209,51 +209,55 @@ var TreeNode = function (data, left, right) {
 //   dfs(t, result);
 //   console.log(result);
 // }
-
-// // delete node when sum <=k
-// function dfsH(root, k, sum = 0) {
-//   if (root) {
-//     let lsum = sum + root.data;
-//     let rsum = lsum;
-//     root.left = dfsH(root.left, k, lsum);
-//     root.right = dfsH(root.right, k, rsum);
-//     sum = Math.max(lsum, rsum);
-//     if (sum < k) root = null;
-//     return root;
-//   }
-// }
-// function sumLK(t) {
-//   const k = 4;
-//   dfsH(t, k);
-//   console.log(t);
-// }
 // const t = new TreeNode(2);
 // t.left = new TreeNode(1);
 // t.right = new TreeNode(3);
-// sumLK(t);
+// sum(t)
 
-// print all paths
-function dfs(root, result, curr = [], pathLen = 0) {
+// // delete node when sum <=k
+function dfsH(root, k, sum = 0) {
   if (root) {
-    curr[pathLen] = root.data;
-    pathLen++;
-    if (!root.left && !root.right) {
-      result.push(curr.slice());
-      return;
-    }
-    dfs(root.left, result, curr, pathLen);
-    dfs(root.right, result, curr, pathLen);
+    let lsum = sum + root.data;
+    let rsum = lsum;
+    root.left = dfsH(root.left, k, lsum);
+    root.right = dfsH(root.right, k, rsum);
+    sum = Math.max(lsum, rsum);
+    if (sum < k) root = null;
+    return root;
   }
 }
-function paths(t) {
-  const result = [];
-  dfs(t, result);
-  console.log(result);
+function sumLK(t) {
+  const k = 4;
+  dfsH(t, k);
+  console.log(t);
 }
 const t = new TreeNode(2);
 t.left = new TreeNode(1);
 t.right = new TreeNode(3);
-paths(t);
+sumLK(t);
+
+// print all paths
+// function dfs(root, result, curr = [], pathLen = 0) {
+//   if (root) {
+//     curr[pathLen] = root.data;
+//     pathLen++;
+//     if (!root.left && !root.right) {
+//       result.push(curr.slice());
+//       return;
+//     }
+//     dfs(root.left, result, curr, pathLen);
+//     dfs(root.right, result, curr, pathLen);
+//   }
+// }
+// function paths(t) {
+//   const result = [];
+//   dfs(t, result);
+//   console.log(result);
+// }
+// const t = new TreeNode(2);
+// t.left = new TreeNode(1);
+// t.right = new TreeNode(3);
+// paths(t);
 
 // console.log("inorder");
 // inorder(t);
