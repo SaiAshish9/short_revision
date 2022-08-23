@@ -328,16 +328,14 @@ function lengthOfLongestSubstring(s) {
   const n = s.length;
   let maxL = 0;
   for (let i = 0; i < n; i++) {
-    const visited = Array(256).fill(false);
+    const visited = Array(256);
     for (let j = i; j < n; j++) {
-      if (!visited[s[j].charCodeAt(0)]) {
-        maxL = Math.max(maxL, j - i + 1);
-        visited[s[j].charCodeAt(0)] = true;
-      }
-      visited[s[i].charCodeAt(0)] = false;
+      if (visited[s.charCodeAt(j)]) break;
+      maxL = Math.max(maxL, j - i + 1);
+      visited[s.charCodeAt(j)] = true;
     }
   }
   return maxL;
 }
 
-console.log(lengthOfLongestSubstring("bbbbb"));
+console.log(lengthOfLongestSubstring("abcbbcab"));
