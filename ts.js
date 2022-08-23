@@ -33,3 +33,32 @@ function dfs() {
 
 dfs(binaryTree);
 // [ [ 1, 2, 3 ], [ 1, 2, 4 ], [ 1, 5, 6 ] ]
+
+
+// #include <stdio.h> 
+// #include <stdlib.h> 
+// struct TreeNode {
+//   int data;
+//   struct TreeNode *left;
+//   struct TreeNode *right;
+// };
+// struct TreeNode* newNode(int data)
+// {
+//     struct TreeNode* node = (struct TreeNode*)malloc(sizeof(struct TreeNode));
+//     node->data = data;
+//     node->left = NULL;
+//     node->right = NULL;
+//     return node;
+// }
+// int main() 
+// { 
+//   struct TreeNode* binaryTree = newNode(1);
+//   binaryTree->left = newNode(2);
+//   binaryTree->left->left = newNode(3);
+//   binaryTree->left->right = newNode(4);
+//   binaryTree->right = newNode(5);
+//   binaryTree->right->right = newNode(6);
+//   printf("%p", binaryTree);
+//   return 0; 
+// } 
+
