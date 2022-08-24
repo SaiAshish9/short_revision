@@ -62,3 +62,19 @@ dfs(binaryTree);
 //   return 0; 
 // } 
 
+// package main
+// import "fmt"
+// type TreeNode struct {
+// 	left  *TreeNode
+// 	right *TreeNode
+// 	data  int
+// }
+// func main() {
+// 	binaryTree := &TreeNode{data: 1}
+// 	binaryTree.left = &TreeNode{data: 2}
+// 	binaryTree.left.left = &TreeNode{data: 3}
+// 	binaryTree.left.right = &TreeNode{data: 4}
+// 	binaryTree.right = &TreeNode{data: 5}
+// 	binaryTree.right.right = &TreeNode{data: 6}
+// 	fmt.Println(binaryTree)
+// }
