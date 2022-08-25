@@ -194,29 +194,29 @@ var TreeNode = function (data, left, right) {
 
 // sum of all tree nodes
 
-function dfs(root, result, sum = 0) {
-  if (root) {
-    sum += root.data;
-    if (!root.left && !root.right) {
-      result.push(sum);
-      return;
-    }
-    dfs(root.left, result, sum);
-    dfs(root.right, result, sum);
-  }
-}
-function sum(t) {
-  const result = [];
-  dfs(t, result);
-  console.log(result);
-}
-const t = new TreeNode(1);
-t.left = new TreeNode(2);
-t.left.left = new TreeNode(3);
-t.left.right = new TreeNode(4);
-t.right = new TreeNode(5);
-t.right.right = new TreeNode(6);
-sum(t)
+// function dfs(root, result, sum = 0) {
+//   if (root) {
+//     sum += root.data;
+//     if (!root.left && !root.right) {
+//       result.push(sum);
+//       return;
+//     }
+//     dfs(root.left, result, sum);
+//     dfs(root.right, result, sum);
+//   }
+// }
+// function sum(t) {
+//   const result = [];
+//   dfs(t, result);
+//   console.log(result);
+// }
+// const t = new TreeNode(1);
+// t.left = new TreeNode(2);
+// t.left.left = new TreeNode(3);
+// t.left.right = new TreeNode(4);
+// t.right = new TreeNode(5);
+// t.right.right = new TreeNode(6);
+// sum(t)
 // [ 6, 7, 12 ]
 
 // // delete node when sum <=k
