@@ -214,7 +214,7 @@ const t = new TreeNode(2);
 t.left = new TreeNode(1);
 t.right = new TreeNode(3);
 sum(t)
-
+// [ 3, 5 ]
 
 
 // // delete node when sum <=k
