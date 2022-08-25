@@ -336,20 +336,25 @@ var TreeNode = function (data, left, right) {
 // rightView(t);
 // // check BST
 
-// function BST(root) {
-//   let prev;
-//   if (root) {
-//     if (!BST(root.left)) return false;
-//     if (prev && root.data <= prev.data) return false;
-//     prev = root;
-//     return BST(root.right);
-//   }
-//   return true;
-// }
-// const t = new TreeNode(2);
-// t.left = new TreeNode(1);
-// t.right = new TreeNode(3);
-// console.log(BST(t));
+function BST(root) {
+  let prev;
+  if (root) {
+    if (!BST(root.left)) return false;
+    if (prev && root.data <= prev.data) return false;
+    prev = root;
+    return BST(root.right);
+  }
+  return true;
+}
+const t = new TreeNode(1);
+t.left = new TreeNode(2);
+t.left.left = new TreeNode(3);
+t.left.right = new TreeNode(4);
+t.right = new TreeNode(5);
+t.right.right = new TreeNode(6);
+console.log(BST(t));
+
+
 // true
 
 // // immediateChildrenAreItsPrimeFactors
