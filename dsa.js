@@ -240,8 +240,11 @@ const t = new TreeNode(2);
 t.left = new TreeNode(1);
 t.right = new TreeNode(3);
 sumLK(t);
-
-
+// TreeNode {
+//   data: 2,
+//   left: null,
+//   right: TreeNode { data: 3, left: undefined, right: undefined }
+// }
 
 // print all paths
 // function dfs(root, result, curr = [], pathLen = 0) {
