@@ -193,48 +193,51 @@ var TreeNode = function (data, left, right) {
 // }
 
 // sum of all tree nodes
-// function dfs(root, result, sum = 0) {
-//   if (root) {
-//     sum += root.data;
-//     if (!root.left && !root.right) {
-//       result.push(sum);
-//       return;
-//     }
-//     dfs(root.left, result, sum);
-//     dfs(root.right, result, sum);
-//   }
-// }
-// function sum(t) {
-//   const result = [];
-//   dfs(t, result);
-//   console.log(result);
-// }
-// const t = new TreeNode(2);
-// t.left = new TreeNode(1);
-// t.right = new TreeNode(3);
-// sum(t)
 
-// // delete node when sum <=k
-function dfsH(root, k, sum = 0) {
+function dfs(root, result, sum = 0) {
   if (root) {
-    let lsum = sum + root.data;
-    let rsum = lsum;
-    root.left = dfsH(root.left, k, lsum);
-    root.right = dfsH(root.right, k, rsum);
-    sum = Math.max(lsum, rsum);
-    if (sum < k) root = null;
-    return root;
+    sum += root.data;
+    if (!root.left && !root.right) {
+      result.push(sum);
+      return;
+    }
+    dfs(root.left, result, sum);
+    dfs(root.right, result, sum);
   }
 }
-function sumLK(t) {
-  const k = 4;
-  dfsH(t, k);
-  console.log(t);
+function sum(t) {
+  const result = [];
+  dfs(t, result);
+  console.log(result);
 }
 const t = new TreeNode(2);
 t.left = new TreeNode(1);
 t.right = new TreeNode(3);
-sumLK(t);
+sum(t)
+
+
+
+// // delete node when sum <=k
+// function dfsH(root, k, sum = 0) {
+//   if (root) {
+//     let lsum = sum + root.data;
+//     let rsum = lsum;
+//     root.left = dfsH(root.left, k, lsum);
+//     root.right = dfsH(root.right, k, rsum);
+//     sum = Math.max(lsum, rsum);
+//     if (sum < k) root = null;
+//     return root;
+//   }
+// }
+// function sumLK(t) {
+//   const k = 4;
+//   dfsH(t, k);
+//   console.log(t);
+// }
+// const t = new TreeNode(2);
+// t.left = new TreeNode(1);
+// t.right = new TreeNode(3);
+// sumLK(t);
 
 // print all paths
 // function dfs(root, result, curr = [], pathLen = 0) {
