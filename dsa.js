@@ -194,28 +194,30 @@ var TreeNode = function (data, left, right) {
 
 // sum of all tree nodes
 
-// function dfs(root, result, sum = 0) {
-//   if (root) {
-//     sum += root.data;
-//     if (!root.left && !root.right) {
-//       result.push(sum);
-//       return;
-//     }
-//     dfs(root.left, result, sum);
-//     dfs(root.right, result, sum);
-//   }
-// }
-// function sum(t) {
-//   const result = [];
-//   dfs(t, result);
-//   console.log(result);
-// }
-// const t = new TreeNode(2);
-// t.left = new TreeNode(1);
-// t.right = new TreeNode(3);
-// sum(t)
-// [ 3, 5 ]
-
+function dfs(root, result, sum = 0) {
+  if (root) {
+    sum += root.data;
+    if (!root.left && !root.right) {
+      result.push(sum);
+      return;
+    }
+    dfs(root.left, result, sum);
+    dfs(root.right, result, sum);
+  }
+}
+function sum(t) {
+  const result = [];
+  dfs(t, result);
+  console.log(result);
+}
+const t = new TreeNode(1);
+t.left = new TreeNode(2);
+t.left.left = new TreeNode(3);
+t.left.right = new TreeNode(4);
+t.right = new TreeNode(5);
+t.right.right = new TreeNode(6);
+sum(t)
+// [ 6, 7, 12 ]
 
 // // delete node when sum <=k
 
@@ -334,20 +336,20 @@ var TreeNode = function (data, left, right) {
 // rightView(t);
 // // check BST
 
-function BST(root) {
-  let prev;
-  if (root) {
-    if (!BST(root.left)) return false;
-    if (prev && root.data <= prev.data) return false;
-    prev = root;
-    return BST(root.right);
-  }
-  return true;
-}
-const t = new TreeNode(2);
-t.left = new TreeNode(1);
-t.right = new TreeNode(3);
-console.log(BST(t));
+// function BST(root) {
+//   let prev;
+//   if (root) {
+//     if (!BST(root.left)) return false;
+//     if (prev && root.data <= prev.data) return false;
+//     prev = root;
+//     return BST(root.right);
+//   }
+//   return true;
+// }
+// const t = new TreeNode(2);
+// t.left = new TreeNode(1);
+// t.right = new TreeNode(3);
+// console.log(BST(t));
 // true
 
 // // immediateChildrenAreItsPrimeFactors
