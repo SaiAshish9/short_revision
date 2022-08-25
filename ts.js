@@ -78,3 +78,43 @@ dfs(binaryTree);
 // 	binaryTree.right.right = &TreeNode{data: 6}
 // 	fmt.Println(binaryTree)
 // }
+
+
+// package main
+
+// import "fmt"
+
+// type TreeNode struct {
+// 	left  *TreeNode
+// 	right *TreeNode
+// 	data  int
+// }
+// func dfsH(head *TreeNode, result [][]int, curr []int, currLength int) {
+// 	if head != nil {
+// 		curr[currLength] = head.data
+// 		currLength++
+// 		if head.left == nil && head.right == nil {
+// 			currLength = 0
+// 			result[currLength] = head.data
+// 			return
+// 		}
+// 		dfsH(head.left, result, curr, currLength)
+// 		dfsH(head.right, result, curr, currLength)
+// 	}
+// }
+// func dfs(head *TreeNode) {
+// 	var result [][]int
+// 	var curr []int
+// 	currLength := 0
+// 	dfsH(head, result, curr, currLength)
+// 	fmt.Println(result)
+// }
+// func main() {
+// 	binaryTree := &TreeNode{data: 1}
+// 	binaryTree.left = &TreeNode{data: 2}
+// 	binaryTree.left.left = &TreeNode{data: 3}
+// 	binaryTree.left.right = &TreeNode{data: 4}
+// 	binaryTree.right = &TreeNode{data: 5}
+// 	binaryTree.right.right = &TreeNode{data: 6}
+// 	dfs(binaryTree)
+// }
