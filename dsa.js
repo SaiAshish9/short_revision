@@ -336,6 +336,9 @@ var TreeNode = function (data, left, right) {
 // rightView(t);
 // // check BST
 
+
+
+
 function BST(root) {
   let prev;
   if (root) {
@@ -353,9 +356,11 @@ t.left.right = new TreeNode(4);
 t.right = new TreeNode(5);
 t.right.right = new TreeNode(6);
 console.log(BST(t));
-
-
 // true
+
+
+
+
 
 // // immediateChildrenAreItsPrimeFactors
 // function primeFactors(n, k) {
