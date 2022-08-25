@@ -333,18 +333,23 @@ var TreeNode = function (data, left, right) {
 // console.log("rightView");
 // rightView(t);
 // // check BST
-// function BST(root) {
-//   let prev;
-//   if (root) {
-//     if (!BST(root.left)) return false;
-//     if (prev && root.data <= prev.data) return false;
-//     prev = root;
-//     return BST(root.right);
-//   }
-//   return true;
-// }
-// console.log("check BST");
-// console.log(BST(t));
+
+function BST(root) {
+  let prev;
+  if (root) {
+    if (!BST(root.left)) return false;
+    if (prev && root.data <= prev.data) return false;
+    prev = root;
+    return BST(root.right);
+  }
+  return true;
+}
+const t = new TreeNode(2);
+t.left = new TreeNode(1);
+t.right = new TreeNode(3);
+console.log(BST(t));
+// true
+
 // // immediateChildrenAreItsPrimeFactors
 // function primeFactors(n, k) {
 //   let c = 2;
