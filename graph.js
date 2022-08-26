@@ -115,66 +115,42 @@
 // g.tsp();
 // // bfs dfs allPathsDfs tsp permutations graphColoring
 
-
 class Graph {
   constructor(n) {
     this.g = {};
     this.n = n;
   }
-  addVertex(u) {
-    this.g[u] = [];
+  addVertex(v) {
+    this.g[v] = [];
   }
   addEdge(u, v) {
     this.g[u].push(v);
+    this.g[v].push(u);
+  }
+  isCyclicUtil(v, visited, parent) {
+    visited[v] = true;
+    for (let i of this.g[v]) {
+      if (!visited[i]) {
+        if (isCyclicUtil(i, visited, v)) return true;
+      } else if (i != parent) return true;
+    }
+    return false;
+  }
+  isTree() {
+    const V = this.n;
+    var visited = Array(V).fill(false);
+    if (isCyclicUtil(0, visited, -1)) return false;
+    for (var u = 0; u < V; u++) if (!visited[u]) return false;
+    return true;
   }
 }
-
 const g = new Graph(4);
 const v = ["A", "B", "C", "D"];
-for (let i in v) {
-  g.addVertex(i);
-}
-g.addEdge(0, 1, 20);
-g.addEdge(0, 2, 42);
-g.addEdge(0, 3, 25);
-g.addEdge(1, 2, 30);
-g.addEdge(1, 3, 34);
-g.addEdge(3, 2, 10);
-
-var V = 0;
-var adj;
-function initialize(v) {
-  V = v;
-  adj = Array.from(Array(v), () => Array());
-}
-
-function addEdge(v, w) {
-  adj[v].push(w);
-  adj[w].push(v);
-}
-
-function isCyclicUtil(v, visited, parent) {
-  visited[v] = true;
-  var i;
-  for (var it of adj[v]) {
-    i = it;
-    if (!visited[i]) {
-      if (isCyclicUtil(i, visited, v)) return true;
-    } else if (i != parent) return true;
-  }
-  return false;
-}
-
-function isTree() {
-  var visited = Array(V).fill(false);
-  if (isCyclicUtil(0, visited, -1)) return false;
-  for (var u = 0; u < V; u++) if (!visited[u]) return false;
-  return true;
-}
-
-addEdge(1, 0);
-addEdge(0, 2);
-addEdge(0, 3);
-addEdge(3, 4);
-if (isTree()) console.log("Graph is Tree");
-else console.log("Graph is not Tree<br>");
+for (let i in v) g.addVertex(i);
+g.addEdge(0, 1);
+g.addEdge(0, 2);
+g.addEdge(0, 3);
+g.addEdge(1, 2);
+g.addEdge(1, 3);
+g.addEdge(3, 2);
+console.log(g.isTree())
