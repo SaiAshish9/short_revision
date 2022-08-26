@@ -206,45 +206,61 @@ var TreeNode = function (data, left = null, right = null) {
 // 	dfs(binaryTree)
 // }
 
-function printLeaves(node) {
-  if (node) {
-    printLeaves(node.left);
-    if (!node.left && !node.right) console.log(node.data);
-    printLeaves(node.right);
-  }
-}
-function printBoundaryLeft(node) {
-  if (node) {
-    if (node.left) {
-      console.log(node.data + " ");
-      printBoundaryLeft(node.left);
-    } else if (node.right) {
-      console.log(node.data);
-      printBoundaryLeft(node.right);
-    }
-  }
+// function printLeaves(node) {
+//   if (node) {
+//     printLeaves(node.left);
+//     if (!node.left && !node.right) console.log(node.data);
+//     printLeaves(node.right);
+//   }
+// }
+// function printBoundaryLeft(node) {
+//   if (node) {
+//     if (node.left) {
+//       console.log(node.data + " ");
+//       printBoundaryLeft(node.left);
+//     } else if (node.right) {
+//       console.log(node.data);
+//       printBoundaryLeft(node.right);
+//     }
+//   }
+// }
+
+// function printBoundaryRight(node) {
+//   if (node) {
+//     if (node.right) {
+//       printBoundaryRight(node.right);
+//       console.log(node.data);
+//     } else if (node.left) {
+//       printBoundaryRight(node.left);
+//       console.log(node.data);
+//     }
+//   }
+// }
+
+// function printBoundary(node) {
+//   if (node) {
+//     console.log(node.data);
+//     printBoundaryLeft(node.left);
+//     printLeaves(node.left);
+//     printLeaves(node.right);
+//     printBoundaryRight(node.right);
+//   }
+// }
+
+function height(node) {
+  if (node == null) return 0;
+  return 1 + Math.max(height(node.left), height(node.right));
 }
 
-function printBoundaryRight(node) {
-  if (node) {
-    if (node.right) {
-      printBoundaryRight(node.right);
-      console.log(node.data);
-    } else if (node.left) {
-      printBoundaryRight(node.left);
-      console.log(node.data);
-    }
+function diameter(root) {
+  if (root) {
+    let lheight = height(root.left);
+    let rheight = height(root.right);
+    let ldiameter = diameter(root.left);
+    let rdiameter = diameter(root.right);
+    return Math.max(lheight + rheight + 1, Math.max(ldiameter, rdiameter));
   }
-}
-
-function printBoundary(node) {
-  if (node) {
-    console.log(node.data);
-    printBoundaryLeft(node.left);
-    printLeaves(node.left);
-    printLeaves(node.right);
-    printBoundaryRight(node.right);
-  }
+  return 0;
 }
 
 const binaryTree = new TreeNode(1);
@@ -253,11 +269,12 @@ binaryTree.left.left = new TreeNode(3);
 binaryTree.left.right = new TreeNode(4);
 binaryTree.right = new TreeNode(5);
 binaryTree.right.right = new TreeNode(6);
-printBoundary(binaryTree)
+diameter(binaryTree)
+
+// printBoundary(binaryTree);
 // 1
-// 2 
+// 2
 // 3
 // 4
 // 6
 // 5
-
