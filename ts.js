@@ -22,7 +22,7 @@ function printVerticalOrder(root) {
   getVerticalOrder(root, hd, m);
   m.sort();
   for (let i in m) {
-    for (let i in m[value]) cosnole.log(i);
+    for (let i in m[value]) console.log(i);
   }
 }
 
