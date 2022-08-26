@@ -500,7 +500,8 @@ t.left.left = new TreeNode(3);
 t.left.right = new TreeNode(4);
 t.right = new TreeNode(5);
 t.right.right = new TreeNode(6);
-console.log(maxDepth(t));
+console.log(findFrequentTreeSum(t));
+// [ 3, 4, 6, 9, 11, 21 ]
 
 // // linked list
 // var ListNode = function (data, next = null) {
