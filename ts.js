@@ -23,29 +23,27 @@ var TreeNode = function (data, left = null, right = null) {
 //   for (let [_, v] of Object.entries(m)) console.log(v);
 // }
 
-class Pair {
-  constructor(a, b) {
-    this.a = a;
-    this.b = b;
-  }
-}
-
-function fillMap(root, d, l, m) {
-  if (root) {
-    if (!m[d]) m[d] = new Pair(root.data, l);
-    else if (m[d].b > l) m[d] = new Pair(root.data, l);
-    fillMap(root.left, d - 1, l + 1, m);
-    fillMap(root.right, d + 1, l + 1, m);
-  }
-}
-
-function topView(root) {
-  const m = {};
-  fillMap(root, 0, 0, m);
-  const arr = Object.keys(m);
-  arr.sort((a, b) => a - b);
-  for (let k of arr) console.log(m[k].a + " ");
-}
+// class Pair {
+//   constructor(a, b) {
+//     this.a = a;
+//     this.b = b;
+//   }
+// }
+// function fillMap(root, d, l, m) {
+//   if (root) {
+//     if (!m[d]) m[d] = new Pair(root.data, l);
+//     else if (m[d].b > l) m[d] = new Pair(root.data, l);
+//     fillMap(root.left, d - 1, l + 1, m);
+//     fillMap(root.right, d + 1, l + 1, m);
+//   }
+// }
+// function topView(root) {
+//   const m = {};
+//   fillMap(root, 0, 0, m);
+//   const arr = Object.keys(m);
+//   arr.sort((a, b) => a - b);
+//   for (let k of arr) console.log(m[k].a + " ");
+// }
 
 const binaryTree = new TreeNode(1);
 binaryTree.left = new TreeNode(2);
