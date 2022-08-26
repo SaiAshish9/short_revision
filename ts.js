@@ -47,20 +47,20 @@ var TreeNode = function (data, left = null, right = null) {
 
 function printBottomViewUtil(root, m, hd, level) {
   if (root) {
-    if (hd in m)
+    if (hd in m) {
       if (level >= m[hd][1]) m[hd] = [root.data, level];
-      else m[hd] = [root.data, level];
-    console.log(m);
-    printBottomViewUtil(root.left, m, hd - 1, level + 1);
-    printBottomViewUtil(root.right, m, hd + 1, level + 1);
+    } else m[hd] = [root.data, level];
+    printBottomViewUtil(root.left, m, +hd - 1, level + 1);
+    printBottomViewUtil(root.right, m, +hd + 1, level + 1);
   }
 }
 
 function bottomView(root) {
   const m = {};
   printBottomViewUtil(root, m, 0, 0);
-  const keys = Object.keys(m).sort();
-  for (let i in keys) console.log(m[i][0]);
+  const e = Object.entries(m).map((x) => [+x[0], x[1]]);
+  e.sort((a, b) => a[0] - b[0]);
+  console.log(e.map((x) => x[1][0]));
 }
 
 const binaryTree = new TreeNode(1);
