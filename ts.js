@@ -44,24 +44,47 @@ var TreeNode = function (data, left = null, right = null) {
 //   arr.sort((a, b) => a - b);
 //   for (let k of arr) console.log(m[k].a + " ");
 // }
+// function printBottomViewUtil(root, m, hd, level) {
+//   if (root) {
+//     if (hd in m) {
+//       if (level >= m[hd][1]) m[hd] = [root.data, level];
+//     } else m[hd] = [root.data, level];
+//     printBottomViewUtil(root.left, m, +hd - 1, level + 1);
+//     printBottomViewUtil(root.right, m, +hd + 1, level + 1);
+//   }
+// }
+// function bottomView(root) {
+//   const m = {};
+//   printBottomViewUtil(root, m, 0, 0);
+//   const e = Object.entries(m).map((x) => [+x[0], x[1]]);
+//   e.sort((a, b) => a[0] - b[0]);
+//   console.log(e.map((x) => x[1][0]));
+// }
 
-function printBottomViewUtil(root, m, hd, level) {
-  if (root) {
-    if (hd in m) {
-      if (level >= m[hd][1]) m[hd] = [root.data, level];
-    } else m[hd] = [root.data, level];
-    printBottomViewUtil(root.left, m, +hd - 1, level + 1);
-    printBottomViewUtil(root.right, m, +hd + 1, level + 1);
-  }
+
+function insertLevelOrder(arr, i)
+{
+    let root = null;
+    if (i < arr.length) {
+        root = new Node(arr[i]);
+        root.left = insertLevelOrder(arr, 2 * i + 1);
+        root.right = insertLevelOrder(arr, 2 * i + 2);
+    }
+    return root;
 }
 
-function bottomView(root) {
-  const m = {};
-  printBottomViewUtil(root, m, 0, 0);
-  const e = Object.entries(m).map((x) => [+x[0], x[1]]);
-  e.sort((a, b) => a[0] - b[0]);
-  console.log(e.map((x) => x[1][0]));
+function inOrder(root)
+{
+    if (root != null) {
+        inOrder(root.left);
+        document.write(root.data + " ");
+        inOrder(root.right);
+    }
 }
+  
+let arr = [ 1, 2, 3, 4, 5, 6, 6, 6, 6 ];
+root = insertLevelOrder(arr, 0);
+inOrder(root);
 
 const binaryTree = new TreeNode(1);
 binaryTree.left = new TreeNode(2);
