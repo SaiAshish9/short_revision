@@ -475,7 +475,6 @@ var TreeNode = function (data, left, right) {
 // }
 // 2
 
-
 // function dfs(root, count) {
 //   if (!root) return 0;
 //   let sum = root.data + dfs(root.left, count) + dfs(root.right, count);
@@ -1411,3 +1410,41 @@ var TreeNode = function (data, left, right) {
 // var envelopes
 //   = [ [ 4, 3 ], [ 5, 3 ], [ 5, 6 ], [ 1, 2 ] ];
 // console.log(maxEnvelopes(envelopes))
+
+var V = 0;
+var adj;
+function initialize(v) {
+  V = v;
+  adj = Array.from(Array(v), () => Array());
+}
+
+function addEdge(v, w) {
+  adj[v].push(w);
+  adj[w].push(v);
+}
+
+function isCyclicUtil(v, visited, parent) {
+  visited[v] = true;
+  var i;
+  for (var it of adj[v]) {
+    i = it;
+    if (!visited[i]) {
+      if (isCyclicUtil(i, visited, v)) return true;
+    } else if (i != parent) return true;
+  }
+  return false;
+}
+
+function isTree() {
+  var visited = Array(V).fill(false);
+  if (isCyclicUtil(0, visited, -1)) return false;
+  for (var u = 0; u < V; u++) if (!visited[u]) return false;
+  return true;
+}
+
+addEdge(1, 0);
+addEdge(0, 2);
+addEdge(0, 3);
+addEdge(3, 4);
+if (isTree()) console.log("Graph is Tree");
+else console.log("Graph is not Tree<br>");
