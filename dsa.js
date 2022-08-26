@@ -457,6 +457,29 @@ var TreeNode = function (data, left, right) {
 // t.right.right = new TreeNode(6);
 // immediateChildrenAreItsPrimeFactors(t); // 0
 
+function maxDepth(root) {
+  const q = [];
+  let height = -1;
+  q.push(root);
+  while (true) {
+    let nodeCount = q.length;
+    if (nodeCount == 0) return height;
+    height++;
+    while (nodeCount > 0) {
+      let node = q.shift();
+      if (node.left) q.push(node.left);
+      if (node.right) q.push(node.right);
+      nodeCount--;
+    }
+  }
+}
+const t = new TreeNode(1);
+t.left = new TreeNode(2);
+t.left.left = new TreeNode(3);
+t.left.right = new TreeNode(4);
+t.right = new TreeNode(5);
+t.right.right = new TreeNode(6);
+console.log(maxDepth(t));
 
 // // linked list
 // var ListNode = function (data, next = null) {
