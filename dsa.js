@@ -480,6 +480,7 @@ t.left.right = new TreeNode(4);
 t.right = new TreeNode(5);
 t.right.right = new TreeNode(6);
 console.log(maxDepth(t));
+// 2
 
 // // linked list
 // var ListNode = function (data, next = null) {
