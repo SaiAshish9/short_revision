@@ -61,27 +61,25 @@ var TreeNode = function (data, left = null, right = null) {
 //   console.log(e.map((x) => x[1][0]));
 // }
 
-function insertLevelOrder(arr, i) {
-  let root = null;
-  if (i < arr.length) {
-    root = new TreeNode(arr[i]);
-    root.left = insertLevelOrder(arr, 2 * i + 1);
-    root.right = insertLevelOrder(arr, 2 * i + 2);
-  }
-  return root;
-}
-
-function inorder(root) {
-  if (root) {
-    inorder(root.left);
-    console.log(root.data);
-    inorder(root.right);
-  }
-}
-
-let arr = [2, 1, 3];
-root = insertLevelOrder(arr, 0);
-inorder(root);
+// function insertLevelOrder(arr, i) {
+//   let root = null;
+//   if (i < arr.length) {
+//     root = new TreeNode(arr[i]);
+//     root.left = insertLevelOrder(arr, 2 * i + 1);
+//     root.right = insertLevelOrder(arr, 2 * i + 2);
+//   }
+//   return root;
+// }
+// function inorder(root) {
+//   if (root) {
+//     inorder(root.left);
+//     console.log(root.data);
+//     inorder(root.right);
+//   }
+// }
+// let arr = [2, 1, 3];
+// root = insertLevelOrder(arr, 0);
+// inorder(root);
 // 1
 // 2
 // 3
