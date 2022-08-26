@@ -24,13 +24,11 @@ binaryTree.right.right = new TreeNode(6);
 //     dfsH(head.right, result, curr, currLength);
 //   }
 // }
-
 // function dfs() {
 //   const result = [];
 //   dfsH(binaryTree, result);
 //   console.log(result);
 // }
-
 // dfs(binaryTree);
 // [ [ 1, 2, 3 ], [ 1, 2, 4 ], [ 1, 5, 6 ] ]
 
