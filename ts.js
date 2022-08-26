@@ -32,8 +32,8 @@ class Pair {
 
 function fillMap(root, d, l, m) {
   if (root) {
-    if (m[d]) m[d] = new Pair(root.data, l);
-    else if (m[d] > l) m[d] = new Pair(root.data, l);
+    if (!m[d]) m[d] = new Pair(root.data, l);
+    else if (m[d].b > l) m[d] = new Pair(root.data, l);
     fillMap(root.left, d - 1, l + 1, m);
     fillMap(root.right, d + 1, l + 1, m);
   }
@@ -42,11 +42,9 @@ function fillMap(root, d, l, m) {
 function topView(root) {
   const m = {};
   fillMap(root, 0, 0, m);
-  const arr = Array.from(Object.keys(m));
+  const arr = Object.keys(m);
   arr.sort((a, b) => a - b);
-  for (let key of arr.values()) {
-    console.log(m.get(key).a + " ");
-  }
+  for (let k of arr) console.log(m[k].a + " ");
 }
 
 const binaryTree = new TreeNode(1);
@@ -56,6 +54,11 @@ binaryTree.left.right = new TreeNode(4);
 binaryTree.right = new TreeNode(5);
 binaryTree.right.right = new TreeNode(6);
 topView(binaryTree);
+// 3 
+// 2 
+// 1 
+// 5 
+// 6 
 
 // printVerticalOrder(binaryTree);
 // [ 1, 4 ]
