@@ -457,50 +457,50 @@ var TreeNode = function (data, left, right) {
 // t.right.right = new TreeNode(6);
 // immediateChildrenAreItsPrimeFactors(t); // 0
 
-function maxDepth(root) {
-  const q = [];
-  let height = -1;
-  q.push(root);
-  while (true) {
-    let nodeCount = q.length;
-    if (nodeCount == 0) return height;
-    height++;
-    while (nodeCount > 0) {
-      let node = q.shift();
-      if (node.left) q.push(node.left);
-      if (node.right) q.push(node.right);
-      nodeCount--;
-    }
-  }
-}
+// function maxDepth(root) {
+//   const q = [];
+//   let height = -1;
+//   q.push(root);
+//   while (true) {
+//     let nodeCount = q.length;
+//     if (nodeCount == 0) return height;
+//     height++;
+//     while (nodeCount > 0) {
+//       let node = q.shift();
+//       if (node.left) q.push(node.left);
+//       if (node.right) q.push(node.right);
+//       nodeCount--;
+//     }
+//   }
+// }
 // 2
 
 
-function dfs(root, count) {
-  if (!root) return 0;
-  let sum = root.data + dfs(root.left, count) + dfs(root.right, count);
-  count[sum] = (count[sum] || 0) + 1;
-  return sum;
-}
+// function dfs(root, count) {
+//   if (!root) return 0;
+//   let sum = root.data + dfs(root.left, count) + dfs(root.right, count);
+//   count[sum] = (count[sum] || 0) + 1;
+//   return sum;
+// }
 
-var findFrequentTreeSum = function (root) {
-  if (!root) return [];
-  const count = {};
-  dfs(root, count);
-  let maxFreq = Math.max(...Object.values(count));
-  const res = [];
-  for (let s in count) {
-    if (count[s] === maxFreq) res.push(+s);
-  }
-  return res;
-};
-const t = new TreeNode(1);
-t.left = new TreeNode(2);
-t.left.left = new TreeNode(3);
-t.left.right = new TreeNode(4);
-t.right = new TreeNode(5);
-t.right.right = new TreeNode(6);
-console.log(findFrequentTreeSum(t));
+// var findFrequentTreeSum = function (root) {
+//   if (!root) return [];
+//   const count = {};
+//   dfs(root, count);
+//   let maxFreq = Math.max(...Object.values(count));
+//   const res = [];
+//   for (let s in count) {
+//     if (count[s] === maxFreq) res.push(+s);
+//   }
+//   return res;
+// };
+// const t = new TreeNode(1);
+// t.left = new TreeNode(2);
+// t.left.left = new TreeNode(3);
+// t.left.right = new TreeNode(4);
+// t.right = new TreeNode(5);
+// t.right.right = new TreeNode(6);
+// console.log(findFrequentTreeSum(t));
 // [ 3, 4, 6, 9, 11, 21 ]
 
 // // linked list
