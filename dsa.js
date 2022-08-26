@@ -473,6 +473,27 @@ function maxDepth(root) {
     }
   }
 }
+// 2
+
+
+function dfs(root, count) {
+  if (!root) return 0;
+  let sum = root.data + dfs(root.left, count) + dfs(root.right, count);
+  count[sum] = (count[sum] || 0) + 1;
+  return sum;
+}
+
+var findFrequentTreeSum = function (root) {
+  if (!root) return [];
+  const count = {};
+  dfs(root, count);
+  let maxFreq = Math.max(...Object.values(count));
+  const res = [];
+  for (let s in count) {
+    if (count[s] === maxFreq) res.push(+s);
+  }
+  return res;
+};
 const t = new TreeNode(1);
 t.left = new TreeNode(2);
 t.left.left = new TreeNode(3);
@@ -480,7 +501,6 @@ t.left.right = new TreeNode(4);
 t.right = new TreeNode(5);
 t.right.right = new TreeNode(6);
 console.log(maxDepth(t));
-// 2
 
 // // linked list
 // var ListNode = function (data, next = null) {
