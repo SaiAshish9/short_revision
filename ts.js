@@ -45,18 +45,36 @@ var TreeNode = function (data, left = null, right = null) {
 //   for (let k of arr) console.log(m[k].a + " ");
 // }
 
+function printBottomViewUtil(root, m, hd, level) {
+  if (root) {
+    if (hd in m)
+      if (level >= m[hd][1]) m[hd] = [root.data, level];
+      else m[hd] = [root.data, level];
+    console.log(m);
+    printBottomViewUtil(root.left, m, hd - 1, level + 1);
+    printBottomViewUtil(root.right, m, hd + 1, level + 1);
+  }
+}
+
+function bottomView(root) {
+  const m = {};
+  printBottomViewUtil(root, m, 0, 0);
+  const keys = Object.keys(m).sort();
+  for (let i in keys) console.log(m[i][0]);
+}
+
 const binaryTree = new TreeNode(1);
 binaryTree.left = new TreeNode(2);
 binaryTree.left.left = new TreeNode(3);
 binaryTree.left.right = new TreeNode(4);
 binaryTree.right = new TreeNode(5);
 binaryTree.right.right = new TreeNode(6);
-topView(binaryTree);
-// 3 
-// 2 
-// 1 
-// 5 
-// 6 
+bottomView(binaryTree);
+// 3
+// 2
+// 1
+// 5
+// 6
 
 // printVerticalOrder(binaryTree);
 // [ 1, 4 ]
