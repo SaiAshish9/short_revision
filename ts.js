@@ -23,30 +23,29 @@ var TreeNode = function (data, left = null, right = null) {
 //   for (let [_, v] of Object.entries(m)) console.log(v);
 // }
 
-function topView(root) {
-  if (root) return;
-  const q = [];
-  const m = {};
-  let hd = 0;
-  root.hd = hd;
-  q.push(root);
-  while (q.length) {
-    let curr = q[0];
-    hd = curr.hd;
-    if (!m[hd]) m[hd] = curr.data;
-    if (curr.left) {
-      curr.left.hd = hd - 1;
-      q.push(curr.left);
-    }
-    if (curr.right) {
-      curr.right.hd = hd + 1;
-      q.push(curr.right);
-    }
-    q.shift();
+class Pair {
+  constructor(a, b) {
+    this.a = a;
+    this.b = b;
   }
-  const values = Object.values(m);
-  for (let v of values) {
-    console.log(v);
+}
+
+function fillMap(root, d, l) {
+  if (root) {
+    if (m[d]) m[d] = new Pair(root.data, l);
+    else if (m[d].second > l) m[d] = new Pair(root.data, l);
+    fillMap(root.left, d - 1, l + 1);
+    fillMap(root.right, d + 1, l + 1);
+  }
+}
+
+function topView(root) {
+  let m = {};
+  fillMap(root, 0, 0);
+  const arr = Array.from(Object.keys(m));
+  arr.sort((a, b) => a - b);
+  for (let key of arr.values()) {
+    console.log(m.get(key).a + " ");
   }
 }
 
