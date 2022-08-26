@@ -131,7 +131,7 @@ class Graph {
     visited[v] = true;
     for (let i of this.g[v]) {
       if (!visited[i]) {
-        if (isCyclicUtil(i, visited, v)) return true;
+        if (this.isCyclicUtil(i, visited, v)) return true;
       } else if (i != parent) return true;
     }
     return false;
@@ -139,7 +139,7 @@ class Graph {
   isTree() {
     const V = this.n;
     var visited = Array(V).fill(false);
-    if (isCyclicUtil(0, visited, -1)) return false;
+    if (this.isCyclicUtil(0, visited, -1)) return false;
     for (var u = 0; u < V; u++) if (!visited[u]) return false;
     return true;
   }
