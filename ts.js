@@ -270,7 +270,7 @@ binaryTree.left.right = new TreeNode(4);
 binaryTree.right = new TreeNode(5);
 binaryTree.right.right = new TreeNode(6);
 console.log(diameter(binaryTree))
-
+// 5
 
 // printBoundary(binaryTree);
 // 1
