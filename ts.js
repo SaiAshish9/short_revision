@@ -61,38 +61,38 @@ var TreeNode = function (data, left = null, right = null) {
 //   console.log(e.map((x) => x[1][0]));
 // }
 
-
-function insertLevelOrder(arr, i)
-{
-    let root = null;
-    if (i < arr.length) {
-        root = new Node(arr[i]);
-        root.left = insertLevelOrder(arr, 2 * i + 1);
-        root.right = insertLevelOrder(arr, 2 * i + 2);
-    }
-    return root;
+function insertLevelOrder(arr, i) {
+  let root = null;
+  if (i < arr.length) {
+    root = new TreeNode(arr[i]);
+    root.left = insertLevelOrder(arr, 2 * i + 1);
+    root.right = insertLevelOrder(arr, 2 * i + 2);
+  }
+  return root;
 }
 
-function inOrder(root)
-{
-    if (root != null) {
-        inOrder(root.left);
-        document.write(root.data + " ");
-        inOrder(root.right);
-    }
+function inorder(root) {
+  if (root) {
+    inorder(root.left);
+    console.log(root.data);
+    inorder(root.right);
+  }
 }
-  
-let arr = [ 1, 2, 3, 4, 5, 6, 6, 6, 6 ];
+
+let arr = [2, 1, 3];
 root = insertLevelOrder(arr, 0);
-inOrder(root);
+inorder(root);
+// 1
+// 2
+// 3
 
-const binaryTree = new TreeNode(1);
-binaryTree.left = new TreeNode(2);
-binaryTree.left.left = new TreeNode(3);
-binaryTree.left.right = new TreeNode(4);
-binaryTree.right = new TreeNode(5);
-binaryTree.right.right = new TreeNode(6);
-bottomView(binaryTree);
+// const binaryTree = new TreeNode(1);
+// binaryTree.left = new TreeNode(2);
+// binaryTree.left.left = new TreeNode(3);
+// binaryTree.left.right = new TreeNode(4);
+// binaryTree.right = new TreeNode(5);
+// binaryTree.right.right = new TreeNode(6);
+// bottomView(binaryTree);
 // 3
 // 2
 // 4
