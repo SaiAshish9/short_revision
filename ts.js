@@ -269,7 +269,8 @@ binaryTree.left.left = new TreeNode(3);
 binaryTree.left.right = new TreeNode(4);
 binaryTree.right = new TreeNode(5);
 binaryTree.right.right = new TreeNode(6);
-diameter(binaryTree)
+console.log(diameter(binaryTree))
+
 
 // printBoundary(binaryTree);
 // 1
