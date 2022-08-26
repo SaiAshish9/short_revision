@@ -205,3 +205,52 @@ var TreeNode = function (data, left = null, right = null) {
 // 	binaryTree.right.right = &TreeNode{data: 6}
 // 	dfs(binaryTree)
 // }
+
+function printLeaves(node) {
+  if (node) {
+    printLeaves(node.left);
+    if (!node.left && !node.right) console.log(node.data);
+    printLeaves(node.right);
+  }
+}
+function printBoundaryLeft(node) {
+  if (node) {
+    if (node.left) {
+      console.log(node.data + " ");
+      printBoundaryLeft(node.left);
+    } else if (node.right) {
+      console.log(node.data);
+      printBoundaryLeft(node.right);
+    }
+  }
+}
+
+function printBoundaryRight(node) {
+  if (node) {
+    if (node.right) {
+      printBoundaryRight(node.right);
+      console.log(node.data);
+    } else if (node.left) {
+      printBoundaryRight(node.left);
+      console.log(node.data);
+    }
+  }
+}
+
+function printBoundary(node) {
+  if (node) {
+    console.log(node.data);
+    printBoundaryLeft(node.left);
+    printLeaves(node.left);
+    printLeaves(node.right);
+    printBoundaryRight(node.right);
+  }
+}
+
+const binaryTree = new TreeNode(1);
+binaryTree.left = new TreeNode(2);
+binaryTree.left.left = new TreeNode(3);
+binaryTree.left.right = new TreeNode(4);
+binaryTree.right = new TreeNode(5);
+binaryTree.right.right = new TreeNode(6);
+printBoundary(binaryTree)
