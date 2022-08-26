@@ -4,13 +4,35 @@ var TreeNode = function (data, left = null, right = null) {
   this.right = typeof right !== "undefined" ? right : null;
 };
 
+function getVerticalOrder(root, hd, m) {
+  if (root) {
+    if (m[hd]) {
+      m[hd].push(root.key);
+    } else {
+      m[hd] = [root.key];
+    }
+    getVerticalOrder(root.left, hd - 1, m);
+    getVerticalOrder(root.right, hd + 1, m);
+  }
+}
+
+function printVerticalOrder(root) {
+  const m = {};
+  let hd = 0;
+  getVerticalOrder(root, hd, m);
+  m.sort();
+  for (let i in m) {
+    for (let i in m[value]) cosnole.log(i);
+  }
+}
+
 const binaryTree = new TreeNode(1);
 binaryTree.left = new TreeNode(2);
 binaryTree.left.left = new TreeNode(3);
 binaryTree.left.right = new TreeNode(4);
 binaryTree.right = new TreeNode(5);
 binaryTree.right.right = new TreeNode(6);
-
+printVerticalOrder(binaryTree)
 // function dfsH(head, result, curr = [], currLength = 0) {
 //   if (head) {
 //     curr[currLength] = head.data;
@@ -32,9 +54,8 @@ binaryTree.right.right = new TreeNode(6);
 // dfs(binaryTree);
 // [ [ 1, 2, 3 ], [ 1, 2, 4 ], [ 1, 5, 6 ] ]
 
-
-// #include <stdio.h> 
-// #include <stdlib.h> 
+// #include <stdio.h>
+// #include <stdlib.h>
 // struct TreeNode {
 //   int data;
 //   struct TreeNode *left;
@@ -48,8 +69,8 @@ binaryTree.right.right = new TreeNode(6);
 //     node->right = NULL;
 //     return node;
 // }
-// int main() 
-// { 
+// int main()
+// {
 //   struct TreeNode* binaryTree = newNode(1);
 //   binaryTree->left = newNode(2);
 //   binaryTree->left->left = newNode(3);
@@ -57,8 +78,8 @@ binaryTree.right.right = new TreeNode(6);
 //   binaryTree->right = newNode(5);
 //   binaryTree->right->right = newNode(6);
 //   printf("%p", binaryTree);
-//   return 0; 
-// } 
+//   return 0;
+// }
 
 // package main
 // import "fmt"
@@ -76,7 +97,6 @@ binaryTree.right.right = new TreeNode(6);
 // 	binaryTree.right.right = &TreeNode{data: 6}
 // 	fmt.Println(binaryTree)
 // }
-
 
 // package main
 // import "fmt"
