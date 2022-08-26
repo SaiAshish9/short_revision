@@ -45,8 +45,8 @@ function topView(root) {
     q.shift();
   }
   const values = Object.values(m);
-  for (let [_, value] of values) {
-    console.log(value);
+  for (let v of values) {
+    console.log(v);
   }
 }
 
