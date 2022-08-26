@@ -4,23 +4,50 @@ var TreeNode = function (data, left = null, right = null) {
   this.right = typeof right !== "undefined" ? right : null;
 };
 
-function getVerticalOrder(root, hd, m) {
-  if (root) {
-    if (m[hd]) {
-      m[hd].push(root.data);
-    } else {
-      m[hd] = [root.data];
-    }
-    getVerticalOrder(root.left, hd - 1, m);
-    getVerticalOrder(root.right, hd + 1, m);
-  }
-}
+// function getVerticalOrder(root, hd, m) {
+//   if (root) {
+//     if (m[hd]) {
+//       m[hd].push(root.data);
+//     } else {
+//       m[hd] = [root.data];
+//     }
+//     getVerticalOrder(root.left, hd - 1, m);
+//     getVerticalOrder(root.right, hd + 1, m);
+//   }
+// }
 
-function printVerticalOrder(root) {
+// function printVerticalOrder(root) {
+//   const m = {};
+//   let hd = 0;
+//   getVerticalOrder(root, hd, m);
+//   for (let [_, v] of Object.entries(m)) console.log(v);
+// }
+
+function topView(root) {
+  if (root) return;
+  const q = [];
   const m = {};
   let hd = 0;
-  getVerticalOrder(root, hd, m);
-  for (let [_, v] of Object.entries(m)) console.log(v);
+  root.hd = hd;
+  q.push(root);
+  while (q.length) {
+    let curr = q[0];
+    hd = curr.hd;
+    if (!m[hd]) m[hd] = curr.data;
+    if (curr.left) {
+      curr.left.hd = hd - 1;
+      q.push(curr.left);
+    }
+    if (curr.right) {
+      curr.right.hd = hd + 1;
+      q.push(curr.right);
+    }
+    q.shift();
+  }
+  const values = Object.values(m);
+  for (let [_, value] of values) {
+    console.log(value);
+  }
 }
 
 const binaryTree = new TreeNode(1);
@@ -29,7 +56,9 @@ binaryTree.left.left = new TreeNode(3);
 binaryTree.left.right = new TreeNode(4);
 binaryTree.right = new TreeNode(5);
 binaryTree.right.right = new TreeNode(6);
-printVerticalOrder(binaryTree);
+topView(binaryTree);
+
+// printVerticalOrder(binaryTree);
 // [ 1, 4 ]
 // [ 5 ]
 // [ 6 ]
