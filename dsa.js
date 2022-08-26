@@ -170,6 +170,7 @@ var TreeNode = function (data, left, right) {
 };
 
 // // inorder preorder postorder check bst bfs mirror left right sum
+
 // function inorder(root) {
 //   if (root) {
 //     inorder(root.left);
@@ -276,6 +277,7 @@ var TreeNode = function (data, left, right) {
 // preorder(t);
 // console.log("postorder");
 // postorder(t);
+
 // function bfs(root) {
 //   let q = [];
 //   q.push(root);
@@ -286,6 +288,20 @@ var TreeNode = function (data, left, right) {
 //     if (curr.right) q.push(curr.right);
 //   }
 // }
+// const t = new TreeNode(1);
+// t.left = new TreeNode(2);
+// t.left.left = new TreeNode(3);
+// t.left.right = new TreeNode(4);
+// t.right = new TreeNode(5);
+// t.right.right = new TreeNode(6);
+// bfs(t)
+// 1
+// 2
+// 5
+// 3
+// 4
+// 6
+
 // function mirror(root) {
 //   let q = [];
 //   q.push(root);
@@ -296,6 +312,28 @@ var TreeNode = function (data, left, right) {
 //     if (curr.right) q.push(curr.right);
 //   }
 // }
+// const t = new TreeNode(1);
+// t.left = new TreeNode(2);
+// t.left.left = new TreeNode(3);
+// t.left.right = new TreeNode(4);
+// t.right = new TreeNode(5);
+// t.right.right = new TreeNode(6);
+// mirror(t)
+// console.log(t)
+// TreeNode {
+//   data: 1,
+//   left: TreeNode {
+//     data: 5,
+//     left: TreeNode { data: 6, left: null, right: null },
+//     right: null
+//   },
+//   right: TreeNode {
+//     data: 2,
+//     left: TreeNode { data: 4, left: null, right: null },
+//     right: TreeNode { data: 3, left: null, right: null }
+//   }
+// }
+
 // function leftView(root) {
 //   let q = [];
 //   q.push(root);
@@ -309,6 +347,17 @@ var TreeNode = function (data, left, right) {
 //     }
 //   }
 // }
+// const t = new TreeNode(1);
+// t.left = new TreeNode(2);
+// t.left.left = new TreeNode(3);
+// t.left.right = new TreeNode(4);
+// t.right = new TreeNode(5);
+// t.right.right = new TreeNode(6);
+// leftView(t)
+// 1
+// 2
+// 3
+
 // function rightView(root) {
 //   let q = [];
 //   q.push(root);
@@ -322,6 +371,17 @@ var TreeNode = function (data, left, right) {
 //     }
 //   }
 // }
+// const t = new TreeNode(1);
+// t.left = new TreeNode(2);
+// t.left.left = new TreeNode(3);
+// t.left.right = new TreeNode(4);
+// t.right = new TreeNode(5);
+// t.right.right = new TreeNode(6);
+// rightView(t)
+// 1
+// 5
+// 6
+
 // console.log("bfs");
 // bfs(t);
 // mirror(t);
@@ -336,33 +396,27 @@ var TreeNode = function (data, left, right) {
 // rightView(t);
 // // check BST
 
-
-
-
-function BST(root) {
-  let prev;
-  if (root) {
-    if (!BST(root.left)) return false;
-    if (prev && root.data <= prev.data) return false;
-    prev = root;
-    return BST(root.right);
-  }
-  return true;
-}
-const t = new TreeNode(1);
-t.left = new TreeNode(2);
-t.left.left = new TreeNode(3);
-t.left.right = new TreeNode(4);
-t.right = new TreeNode(5);
-t.right.right = new TreeNode(6);
-console.log(BST(t));
+// function BST(root) {
+//   let prev;
+//   if (root) {
+//     if (!BST(root.left)) return false;
+//     if (prev && root.data <= prev.data) return false;
+//     prev = root;
+//     return BST(root.right);
+//   }
+//   return true;
+// }
+// const t = new TreeNode(1);
+// t.left = new TreeNode(2);
+// t.left.left = new TreeNode(3);
+// t.left.right = new TreeNode(4);
+// t.right = new TreeNode(5);
+// t.right.right = new TreeNode(6);
+// console.log(BST(t));
 // true
 
-
-
-
-
 // // immediateChildrenAreItsPrimeFactors
+
 // function primeFactors(n, k) {
 //   let c = 2;
 //   let res = [];
@@ -395,8 +449,15 @@ console.log(BST(t));
 //   }
 //   console.log(count);
 // }
-// console.log("immediateChildrenAreItsPrimeFactors");
-// immediateChildrenAreItsPrimeFactors(t);
+// const t = new TreeNode(1);
+// t.left = new TreeNode(2);
+// t.left.left = new TreeNode(3);
+// t.left.right = new TreeNode(4);
+// t.right = new TreeNode(5);
+// t.right.right = new TreeNode(6);
+// immediateChildrenAreItsPrimeFactors(t); // 0
+
+
 // // linked list
 // var ListNode = function (data, next = null) {
 //   this.data = data;
