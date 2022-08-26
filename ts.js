@@ -254,3 +254,9 @@ binaryTree.left.right = new TreeNode(4);
 binaryTree.right = new TreeNode(5);
 binaryTree.right.right = new TreeNode(6);
 printBoundary(binaryTree)
+// 1
+// 2 
+// 3
+// 4
+// 6
+// 5
