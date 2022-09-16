@@ -1386,24 +1386,24 @@ var TreeNode = function (data, left, right) {
 // Stock Span Problem
 // Input: N = 7, price[] = [100 80 60 70 60 75 85]
 // Output: 1 1 1 2 1 4 6
-function peek(stack) {
-  return stack.slice(-1)[0];
-}
-function stockSpanProblem(price) {
-  const stack = [];
-  const n = price.length;
-  const span = Array(n + 1).fill(0);
-  stack.push(0);
-  span[0] = 1;
-  for (var i = 1; i < n; i++) {
-    while (stack.length !== 0 && price[peek(stack)] <= price[i]) stack.pop();
-    span[i] = stack.length === 0 ? i + 1 : i - peek(stack);
-    stack.push(i);
-  }
-  return span;
-}
-const price = [10, 4, 5, 90, 120, 80];
-console.log(stockSpanProblem(price));
+// function peek(stack) {
+//   return stack.slice(-1)[0];
+// }
+// function stockSpanProblem(price) {
+//   const stack = [];
+//   const n = price.length;
+//   const span = Array(n + 1).fill(0);
+//   stack.push(0);
+//   span[0] = 1;
+//   for (var i = 1; i < n; i++) {
+//     while (stack.length !== 0 && price[peek(stack)] <= price[i]) stack.pop();
+//     span[i] = stack.length === 0 ? i + 1 : i - peek(stack);
+//     stack.push(i);
+//   }
+//   return span;
+// }
+// const price = [10, 4, 5, 90, 120, 80];
+// console.log(stockSpanProblem(price));
 
 // celebrity problem
 
