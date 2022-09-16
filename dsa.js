@@ -1360,6 +1360,7 @@ sumLK(t);
 // }
 // console.log(nextGreaterElement([1, 2, 3]));
 
+// Asteroid Collision
 // function peek(stack) {
 //   return stack.slice(-1)[0];
 // }
