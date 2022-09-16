@@ -1384,6 +1384,9 @@ sumLK(t);
 // console.log(asteroidCollision([5, 10, -5]));
 
 // Stock Span Problem
+// Input: N = 7, price[] = [100 80 60 70 60 75 85]
+// Output: 1 1 1 2 1 4 6
+
 
 
 // let arr5 = [3, 2, 0, 1];
