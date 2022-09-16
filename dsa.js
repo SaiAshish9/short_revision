@@ -163,7 +163,7 @@
 // g3.addEdge(2, 0, 30);
 // g3.tsp();
 // trees
-var TreeNode = function (data, left, right) {
+let TreeNode = function (data, left, right) {
   this.data = data;
   this.left = typeof left === "undefined" ? null : left;
   this.right = typeof left === "undefined" ? null : right;
@@ -482,7 +482,7 @@ var TreeNode = function (data, left, right) {
 //   return sum;
 // }
 
-// var findFrequentTreeSum = function (root) {
+// let findFrequentTreeSum = function (root) {
 //   if (!root) return [];
 //   const count = {};
 //   dfs(root, count);
@@ -503,11 +503,11 @@ var TreeNode = function (data, left, right) {
 // [ 3, 4, 6, 9, 11, 21 ]
 
 // // linked list
-// var ListNode = function (data, next = null) {
+// let ListNode = function (data, next = null) {
 //   this.data = data;
 //   this.next = typeof next === "undefined" ? null : next;
 // };
-// var l = new ListNode(1);
+// let l = new ListNode(1);
 // l.next = new ListNode(2);
 // l.next.next = new ListNode(3);
 // // l.next.next = l;
@@ -775,14 +775,14 @@ var TreeNode = function (data, left, right) {
 // }
 
 // // array permutations
-// var permute = function (nums) {
+// let permute = function (nums) {
 //   let res = [];
 //   let visited = Array(nums.length).fill(false);
 //   dfs(nums, res, [], visited);
 //   return res;
 // };
 
-// var dfs = function (nums, res = [], curr = [], visited = []) {
+// let dfs = function (nums, res = [], curr = [], visited = []) {
 //   if (curr.length == nums.length) {
 //     res.push(curr.slice());
 //     return;
@@ -799,7 +799,7 @@ var TreeNode = function (data, left, right) {
 // };
 
 // // combinations
-// var dfs = function (n, k, s, res, curr = []) {
+// let dfs = function (n, k, s, res, curr = []) {
 //   if (k == 0) {
 //     res.push(curr.slice());
 //     return;
@@ -1233,7 +1233,7 @@ var TreeNode = function (data, left, right) {
 // console.log("##############");
 // console.log(lcis(arr3, arr4));
 
-// var longestPalindrome = function (s) {
+// let longestPalindrome = function (s) {
 //   let n = s.length;
 //   let dp = Array.from(Array(n), () => Array(n).fill(false));
 //   let maxLength = 1;
@@ -1326,12 +1326,12 @@ var TreeNode = function (data, left, right) {
 
 // // validParentheses
 // function validParentheses(s) {
-//   var match = {
+//   let match = {
 //     ")": "(",
 //     "}": "{",
 //     "]": "[",
 //   };
-//   var stack = [];
+//   let stack = [];
 //   for (let i in s) {
 //     if (s[i] === "(" || s[i] === "{" || s[i] === "[") {
 //       stack.push(s[i]);
@@ -1395,7 +1395,7 @@ var TreeNode = function (data, left, right) {
 //   const span = Array(n + 1).fill(0);
 //   stack.push(0);
 //   span[0] = 1;
-//   for (var i = 1; i < n; i++) {
+//   for (let i = 1; i < n; i++) {
 //     while (stack.length !== 0 && price[peek(stack)] <= price[i]) stack.pop();
 //     span[i] = stack.length === 0 ? i + 1 : i - peek(stack);
 //     stack.push(i);
@@ -1406,6 +1406,42 @@ var TreeNode = function (data, left, right) {
 // console.log(stockSpanProblem(price));
 
 // celebrity problem
+
+const MATRIX = [
+  [0, 0, 1, 0],
+  [0, 0, 1, 0],
+  [0, 0, 0, 0],
+  [0, 0, 1, 0],
+];
+function knows(a, b) {
+  let res = MATRIX[a][b] == 1 ? true : false;
+  return res;
+}
+function findCelebrity(n) {
+  let st = new Array();
+  let c;
+  for (let i = 0; i < n; i++) {
+    st.push(i);
+  }
+  while (st.length > 1) {
+    let a = st.pop();
+    let b = st.pop();
+    if (knows(a, b)) {
+      st.push(b);
+    } else st.push(a);
+  }
+  if (st.length == 0) return -1;
+  c = st.pop();
+  for (i = 0; i < n; i++) {
+    if (i != c && (knows(c, i) || !knows(i, c))) return -1;
+  }
+  return c;
+}
+let n = 4;
+let result = findCelebrity(n);
+if (result == -1) {
+  console.log("No Celebrity");
+} else console.log("Celebrity ID " + result);
 
 // let arr5 = [3, 2, 0, 1];
 // arr5 = arr5.map((val, index) => {
@@ -1424,27 +1460,27 @@ var TreeNode = function (data, left, right) {
 // // [1, 0, 3, 2]
 
 // function lis(arr) {
-//   var n = arr.length;
-//   var dp = Array(n).fill(1);
-//   for (var i = 1; i < n; ++i) {
-//     for (var j = 0; j < i; ++j) {
+//   let n = arr.length;
+//   let dp = Array(n).fill(1);
+//   for (let i = 1; i < n; ++i) {
+//     for (let j = 0; j < i; ++j) {
 //       if (arr[i] > arr[j] && dp[i] < dp[j] + 1) dp[i] = dp[j] + 1;
 //     }
 //   }
 //   console.log(dp);
 //   return Math.max(...arr);
 // }
-// var arr = [1, 2, 3, 0, 1, 2];
+// let arr = [1, 2, 3, 0, 1, 2];
 // console.log(lis(arr));
 
 // function maxEnvelopes(envelopes){
-//   var n = envelopes.length;
+//   let n = envelopes.length;
 //   if (n == 0)
 //       return n;
 //   envelopes.sort();
-//   var dp = Array(n).fill(1);
-//   for (var i = 1; i < n; ++i) {
-//       for (var j = 0; j < i; ++j) {
+//   let dp = Array(n).fill(1);
+//   for (let i = 1; i < n; ++i) {
+//       for (let j = 0; j < i; ++j) {
 //           if (envelopes[i][0] > envelopes[j][0]
 //               && envelopes[i][1] > envelopes[j][1]
 //               && dp[i] < dp[j] + 1)
@@ -1454,6 +1490,6 @@ var TreeNode = function (data, left, right) {
 //   // lookup dp table => [1, 2, 2, 3]
 //   return Math.max(...dp);
 // }
-// var envelopes
+// let envelopes
 //   = [ [ 4, 3 ], [ 5, 3 ], [ 5, 6 ], [ 1, 2 ] ];
 // console.log(maxEnvelopes(envelopes))
