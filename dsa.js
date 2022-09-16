@@ -1322,6 +1322,8 @@ sumLK(t);
 // console.log("slidingWindow");
 // console.log(slidingWindow([100, 200, 300, 400], 2));
 
+// valid parenthesis , next greater element , next smaller element
+
 // // validParentheses
 // function validParentheses(s) {
 //   var match = {
