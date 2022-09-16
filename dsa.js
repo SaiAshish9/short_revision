@@ -1383,6 +1383,9 @@ sumLK(t);
 // }
 // console.log(asteroidCollision([5, 10, -5]));
 
+// Stock Span Problem
+
+
 // let arr5 = [3, 2, 0, 1];
 // arr5 = arr5.map((val, index) => {
 //   let obj = {
