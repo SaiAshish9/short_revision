@@ -1405,6 +1405,8 @@ function stockSpanProblem(price) {
 const price = [10, 4, 5, 90, 120, 80];
 console.log(stockSpanProblem(price));
 
+// celebrity problem
+
 // let arr5 = [3, 2, 0, 1];
 // arr5 = arr5.map((val, index) => {
 //   let obj = {
