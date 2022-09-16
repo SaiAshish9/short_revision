@@ -1390,19 +1390,20 @@ function peek(stack) {
   return stack.slice(-1)[0];
 }
 function stockSpanProblem(price) {
-  const span = []
   const stack = [];
+  const n = price.length;
+  const span = Array(n + 1).fill(0);
   stack.push(0);
   span[0] = 1;
   for (var i = 1; i < n; i++) {
-    while (stack.length !== 0 && price[stack[stack.length - 1]] <= price[i]) stack.pop();
-    span[i] = stack.length === 0 ? i + 1 : i - stack[stack.length - 1];
+    while (stack.length !== 0 && price[peek(stack)] <= price[i]) stack.pop();
+    span[i] = stack.length === 0 ? i + 1 : i - peek(stack);
     stack.push(i);
   }
-  console.log(span)
+  console.log(span);
 }
-const price = [10, 4, 5, 90, 120, 80]
-console.log(stockSpanProblem(price))
+const price = [10, 4, 5, 90, 120, 80];
+console.log(stockSpanProblem(price));
 
 // let arr5 = [3, 2, 0, 1];
 // arr5 = arr5.map((val, index) => {
