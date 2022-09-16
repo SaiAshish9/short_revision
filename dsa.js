@@ -1360,6 +1360,26 @@ sumLK(t);
 // }
 // console.log(nextGreaterElement([1, 2, 3]));
 
+// function peek(stack) {
+//   return stack.slice(-1)[0];
+// }
+// function asteroidCollision(asteroids) {
+//   const stack = [];
+//   for (let a of asteroids)
+//     if (a > 0) {
+//       stack.push(a);
+//     } else {
+//       while (stack.length && peek(stack) > 0 && peek(stack) < -a) stack.pop();
+//       if (!stack.length || peek(stack) < 0) stack.push(a);
+//       else if (peek(stack) == -a) stack.pop();
+//       else;
+//     }
+//   const res = Array(stack.length).fill(0);
+//   for (let i = res.length - 1; i >= 0; --i) res[i] = stack.pop();
+//   return res;
+// }
+// console.log(asteroidCollision([5, 10, -5]));
+
 // let arr5 = [3, 2, 0, 1];
 // arr5 = arr5.map((val, index) => {
 //   let obj = {
@@ -1411,22 +1431,4 @@ sumLK(t);
 //   = [ [ 4, 3 ], [ 5, 3 ], [ 5, 6 ], [ 1, 2 ] ];
 // console.log(maxEnvelopes(envelopes))
 
-// function peek(stack) {
-//   return stack.slice(-1)[0];
-// }
-// function asteroidCollision(asteroids) {
-//   const stack = [];
-//   for (let a of asteroids)
-//     if (a > 0) {
-//       stack.push(a);
-//     } else {
-//       while (stack.length && peek(stack) > 0 && peek(stack) < -a) stack.pop();
-//       if (!stack.length || peek(stack) < 0) stack.push(a);
-//       else if (peek(stack) == -a) stack.pop();
-//       else;
-//     }
-//   const res = Array(stack.length).fill(0);
-//   for (let i = res.length - 1; i >= 0; --i) res[i] = stack.pop();
-//   return res;
-// }
-// console.log(asteroidCollision([5, 10, -5]));
+
