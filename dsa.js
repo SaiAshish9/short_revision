@@ -1519,6 +1519,7 @@ var isMatch = function (s, p) {
     return false;
   }
   const dp = Array.from(Array(rows + 1), () => Array(columns + 1).fill(false));
+  console.log(dp)
   dp[0][0] = true;
   for (let i = 1; i < columns + 1; i++) {
     if (p[i - 1] === "*") {
