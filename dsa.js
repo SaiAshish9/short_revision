@@ -1386,17 +1386,23 @@ sumLK(t);
 // Stock Span Problem
 // Input: N = 7, price[] = [100 80 60 70 60 75 85]
 // Output: 1 1 1 2 1 4 6
-
-function calculateSpan(price, n, S) {
-  var st = [];
-  st.push(0);
-  S[0] = 1;
-  for (var i = 1; i < n; i++) {
-    while (st.length !== 0 && price[st[st.length - 1]] <= price[i]) st.pop();
-    S[i] = st.length === 0 ? i + 1 : i - st[st.length - 1];
-    st.push(i);
-  }
+function peek(stack) {
+  return stack.slice(-1)[0];
 }
+function stockSpanProblem(price) {
+  const span = []
+  const stack = [];
+  stack.push(0);
+  span[0] = 1;
+  for (var i = 1; i < n; i++) {
+    while (stack.length !== 0 && price[stack[stack.length - 1]] <= price[i]) stack.pop();
+    span[i] = stack.length === 0 ? i + 1 : i - stack[stack.length - 1];
+    stack.push(i);
+  }
+  console.log(span)
+}
+const price = [10, 4, 5, 90, 120, 80]
+console.log(stockSpanProblem(price))
 
 // let arr5 = [3, 2, 0, 1];
 // arr5 = arr5.map((val, index) => {
