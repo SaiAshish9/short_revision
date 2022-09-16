@@ -1443,6 +1443,27 @@ if (result == -1) {
   console.log("No Celebrity");
 } else console.log("Celebrity ID " + result);
 
+// heights = [2,1,5,6,2,3]
+// Output: 10
+ var largestRectangleArea = function(heights) {
+  let ans = 0
+  const stack = []
+  for (let i = 0; i <= heights.length; i++) {
+      while (stack.length && (i == heights.length || heights[stack[stack.length - 1]] > heights[i])) {
+          let h = heights[stack.pop()]
+          let w;
+          if (stack.length)
+              w = i - stack[stack.length - 1] - 1
+          else
+              w = i
+          ans = Math.max(ans, h * w)
+      }
+      stack.push(i)
+  }
+  return ans
+};
+largestRectangleArea([2, 1, 5, 6, 2, 3])
+
 // let arr5 = [3, 2, 0, 1];
 // arr5 = arr5.map((val, index) => {
 //   let obj = {
