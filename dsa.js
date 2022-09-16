@@ -1387,7 +1387,16 @@ sumLK(t);
 // Input: N = 7, price[] = [100 80 60 70 60 75 85]
 // Output: 1 1 1 2 1 4 6
 
-
+function calculateSpan(price, n, S) {
+  var st = [];
+  st.push(0);
+  S[0] = 1;
+  for (var i = 1; i < n; i++) {
+    while (st.length !== 0 && price[st[st.length - 1]] <= price[i]) st.pop();
+    S[i] = st.length === 0 ? i + 1 : i - st[st.length - 1];
+    st.push(i);
+  }
+}
 
 // let arr5 = [3, 2, 0, 1];
 // arr5 = arr5.map((val, index) => {
@@ -1439,5 +1448,3 @@ sumLK(t);
 // var envelopes
 //   = [ [ 4, 3 ], [ 5, 3 ], [ 5, 6 ], [ 1, 2 ] ];
 // console.log(maxEnvelopes(envelopes))
-
-
