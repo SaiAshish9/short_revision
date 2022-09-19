@@ -1548,7 +1548,7 @@
 // console.log(isMatch("aab", "c*a*b"));
 
 var permutations = function (nums, result, visited = {}, curr = []) {
-  if ((nums.length == curr.length)) {
+  if (nums.length == curr.length) {
     result.push(curr.slice());
     return;
   }
@@ -1564,5 +1564,8 @@ var permutations = function (nums, result, visited = {}, curr = []) {
 };
 
 const result = [];
-permutations([1, 2], result);
+permutations([1, 2, 2], result);
 console.log(result);
+
+// in order to eliminate duplicate permutations , sort the initial array and use continue
+// keyword when nums[i] == nums[i-1] && i>0 && !visited[i-1]
